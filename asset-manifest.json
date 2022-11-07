@@ -1,16 +1,13 @@
 {
-  "files": {
-    "main.css": "/4HC3Project/static/css/main.073c9b0a.css",
-    "main.js": "/4HC3Project/static/js/main.d83647f3.js",
-    "static/js/787.db49c178.chunk.js": "/4HC3Project/static/js/787.db49c178.chunk.js",
-    "static/media/logo.svg": "/4HC3Project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/4HC3Project/index.html",
-    "main.073c9b0a.css.map": "/4HC3Project/static/css/main.073c9b0a.css.map",
-    "main.d83647f3.js.map": "/4HC3Project/static/js/main.d83647f3.js.map",
-    "787.db49c178.chunk.js.map": "/4HC3Project/static/js/787.db49c178.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.d83647f3.js"
-  ]
+  "main.css": "/4HC3Project/static/css/main.6b190370.chunk.css",
+  "main.js": "/4HC3Project/static/js/main.e2ff5177.chunk.js",
+  "main.js.map": "/4HC3Project/static/js/main.e2ff5177.chunk.js.map",
+  "static/js/1.651b06f4.chunk.js": "/4HC3Project/static/js/1.651b06f4.chunk.js",
+  "static/js/1.651b06f4.chunk.js.map": "/4HC3Project/static/js/1.651b06f4.chunk.js.map",
+  "runtime~main.js": "/4HC3Project/static/js/runtime~main.ec61023e.js",
+  "runtime~main.js.map": "/4HC3Project/static/js/runtime~main.ec61023e.js.map",
+  "static/css/main.6b190370.chunk.css.map": "/4HC3Project/static/css/main.6b190370.chunk.css.map",
+  "index.html": "/4HC3Project/index.html",
+  "precache-manifest.b9c04d87e2380044238f6909aa28d4e6.js": "/4HC3Project/precache-manifest.b9c04d87e2380044238f6909aa28d4e6.js",
+  "service-worker.js": "/4HC3Project/service-worker.js"
 }
