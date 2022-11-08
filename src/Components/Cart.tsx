@@ -5,7 +5,7 @@ export interface cartProps {
     name: string;
     price: number;
     quantity: number;
-    options?: [optionsProps];
+    options?: optionsProps[];
 }
 
 export interface optionsProps {
@@ -13,13 +13,16 @@ export interface optionsProps {
     price: number;
 }
 
-const cart = (props: cartProps) => {
+const cart = (props: cartProps[]) => {
     return (
        <div>
           <h1>food name:</h1>
-           <p>{props.name}</p>
-           <p>{props.price}</p>
-           <p>{props.quantity}</p>
+           <p>{props[0].name}</p>
+           <p>{props[0].price}</p>
+           <p>{props[0].quantity}</p>
+           <p>{props[1].name}</p>
+           <p>{props[1].price}</p>
+           <p>{props[1].quantity}</p>
        </div>
     );
 }

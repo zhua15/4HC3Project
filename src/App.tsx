@@ -6,11 +6,18 @@ import Popup from './Pages/PopupPage';
 import Summary from './Pages/SummaryPage';
 import Cart, { cartProps, optionsProps } from './Components/Cart'
 
-const cart : cartProps= {
-  name: "pizza",
-  price: 10,
-  quantity: 2
-}
+const cart : cartProps[] = [
+  {
+    name: "pizza",
+    price: 10,
+    quantity: 2
+  },
+  {
+    name: "cat food",
+    price: 100,
+    quantity: 30
+  }
+]
  
 class App extends Component {
   render() {
