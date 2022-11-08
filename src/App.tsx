@@ -16,6 +16,16 @@ const cart : cartProps = {cart: [
     name: "cat food",
     price: 100,
     quantity: 30
+  } as itemProps,
+  {
+    name: "food",
+    price: 69,
+    quantity: 420
+  } as itemProps,
+  {
+    name: "edible food",
+    price: 0,
+    quantity: 0
   } as itemProps
 ]}
 
