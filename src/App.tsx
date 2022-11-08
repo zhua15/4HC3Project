@@ -10,7 +10,8 @@ const cart : cartProps[] = [
   {
     name: "pizza",
     price: 10,
-    quantity: 2
+    quantity: 2,
+    options: [] as optionsProps[]
   },
   {
     name: "cat food",

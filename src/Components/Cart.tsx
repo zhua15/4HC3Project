@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export interface cartProps {
     name: string;
@@ -16,7 +16,11 @@ export interface optionsProps {
 const cart = (props: cartProps[]) => {
     return (
        <div>
-          <h1>food name:</h1>
+          <Typography
+            align='center'
+            >
+            Shopping Cart
+          </Typography>
            <p>{props[0].name}</p>
            <p>{props[0].price}</p>
            <p>{props[0].quantity}</p>
