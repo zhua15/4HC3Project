@@ -3,21 +3,21 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Menu from './Pages/MainPage';
 import Popup, { custimizationOptionProps, custimizationOptionsList, customizationType, popupProps } from './Pages/PopupPage';
 import Summary from './Pages/SummaryPage';
-import Cart, { cartProps, optionsProps } from './Components/Cart'
+import Cart, { cartProps, itemProps, optionsProps } from './Components/Cart'
 
-const cart : cartProps[] = [
+const cart : cartProps = {cart: [
   {
     name: "pizza",
     price: 10,
     quantity: 2,
     options: [] as optionsProps[]
-  },
+  } as itemProps,
   {
     name: "cat food",
     price: 100,
     quantity: 30
-  }
-]
+  } as itemProps
+]}
 
 const customizationOptions: custimizationOptionProps[] = [
   {componentType: customizationType.single,
