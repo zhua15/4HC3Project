@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 export interface cartProps {
     cart: itemProps[]
@@ -22,19 +22,31 @@ const cart = (props: cartProps) => {
        <div>
             <Typography
                 align='center'
-                variant='h1'
+                variant='h2'
                 >
                 Shopping Cart
             </Typography>
             {props.cart.map((item : itemProps) => {
                 return(
                     <Typography>
-                        {item.name}
-                        {item.price}
-                        {item.quantity}
+                        name: {item.name}
+                        price: {item.price}
+                        quantity: {item.quantity}
                     </Typography>
                 )
-            })};
+            })}
+            <Typography
+                align='center'
+                variant='h6'
+                >
+               Total
+            </Typography>
+            <Button>
+                Order
+            </Button>
+            <Button>
+                Pay Bill
+            </Button>
        </div>
     );
 }
