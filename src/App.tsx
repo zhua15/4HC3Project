@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
- 
 import Menu from './Pages/MainPage';
-import Popup from './Pages/PopupPage';
+import Popup, { custimizationOptionProps, custimizationOptionsList, customizationType, popupProps } from './Pages/PopupPage';
 import Summary from './Pages/SummaryPage';
 import Cart, { cartProps, optionsProps } from './Components/Cart'
 
@@ -19,6 +18,35 @@ const cart : cartProps[] = [
     quantity: 30
   }
 ]
+
+const customizationOptions: custimizationOptionProps[] = [
+  {componentType: customizationType.single,
+  label: "Select Cheese",
+  options: [
+    {
+      optionName: "Mozerella"
+    } as custimizationOptionsList
+    ,
+    {
+      optionName: "Cheddar"
+    } as custimizationOptionsList,
+  ] as custimizationOptionsList[]
+}
+]
+
+const popup : popupProps = {
+  name: "Pizza",
+  price: 8.99,
+  image: "./Images/testImage.png",
+  rating: 4,
+  ingrediants: [
+    "Cheese", 
+    "Dough", 
+    "Tomato Sauce"
+  ],
+  calories: 500,
+  customizationOptions: customizationOptions,
+} 
  
 class App extends Component {
   render() {
