@@ -4,6 +4,13 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Menu from './Pages/MainPage';
 import Popup from './Pages/PopupPage';
 import Summary from './Pages/SummaryPage';
+import Cart, { cartProps, optionsProps } from './Components/Cart'
+
+const cart : cartProps= {
+  name: "pizza",
+  price: 10,
+  quantity: 2
+}
  
 class App extends Component {
   render() {
@@ -14,6 +21,7 @@ class App extends Component {
             <Route path="/" element={<Menu/>}/>
             <Route path="/popup" element={<Popup/>}/>
             <Route path="/summary" element={<Summary/>}/>
+            <Route path="/cart" element={<Cart {...cart}/>}/>
           </Routes>
         </div> 
       </HashRouter>

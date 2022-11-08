@@ -1,29 +1,25 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-interface cartProps {
+export interface cartProps {
     name: string;
     price: number;
     quantity: number;
-    options: optionsProps;
+    options?: [optionsProps];
 }
 
-interface optionsProps {
-
-}
-
-const props = {
-    name: "pizza",
-	price: 10,
-	quantity: 2,
-	options: {}
+export interface optionsProps {
+    name: string;
+    price: number;
 }
 
 const cart = (props: cartProps) => {
     return (
        <div>
-          <h1>Menu</h1>
-           <p>Menu page body content</p>
+          <h1>food name:</h1>
+           <p>{props.name}</p>
+           <p>{props.price}</p>
+           <p>{props.quantity}</p>
        </div>
     );
 }
