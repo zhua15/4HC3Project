@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 
 export interface cartProps {
     cart: itemProps[]
@@ -28,9 +29,10 @@ const cart = (props: cartProps) => {
             </Typography>
             {props.cart.map((item : itemProps) => {
                 return(
-                    <Typography>
-                        name: {item.name}
-                        price: {item.price}
+                    <Typography
+                        align='center'>
+                        name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         quantity: {item.quantity}
                     </Typography>
                 )
@@ -39,14 +41,23 @@ const cart = (props: cartProps) => {
                 align='center'
                 variant='h6'
                 >
-               Total
+                Total: {props.cart.reduce((sum: number, item: itemProps) => 
+                sum + (item.price * item.quantity), 0)}
             </Typography>
-            <Button>
-                Order
-            </Button>
-            <Button>
-                Pay Bill
-            </Button>
+            <Box textAlign='center'>
+                <Button variant='contained'>
+                    Order
+                </Button>
+            </Box>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <Box textAlign='center'>
+                <Button variant='contained'>
+                    Pay Bill
+                </Button>
+            </Box>
        </div>
     );
 }
