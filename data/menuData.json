@@ -3,7 +3,7 @@
         {
             "Name": "Pizza",
             "Price":  "8.99",
-            "Image": "./Images/testImage.png",
+            "Image": "/Images/testImage.png",
             "Rating": 4,
             "Ingrediants": [
                 "Cheese", 
@@ -48,7 +48,7 @@
         {
             "name": "Fries",
             "Price":  "4.99",
-            "Image": "./Images/testImage.png",
+            "Image": "/Images/testImage.png",
             "Rating": 4.5,
             "Ingrediants": [
                 "Cheese", 
