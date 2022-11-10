@@ -1,7 +1,11 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 export interface cartProps {
+    cart: itemProps[]
+}
+
+export interface itemProps {
     name: string;
     price: number;
     quantity: number;
@@ -13,20 +17,36 @@ export interface optionsProps {
     price: number;
 }
 
-const cart = (props: cartProps[]) => {
+const cart = (props: cartProps) => {
     return (
        <div>
-          <Typography
-            align='center'
-            >
-            Shopping Cart
-          </Typography>
-           <p>{props[0].name}</p>
-           <p>{props[0].price}</p>
-           <p>{props[0].quantity}</p>
-           <p>{props[1].name}</p>
-           <p>{props[1].price}</p>
-           <p>{props[1].quantity}</p>
+            <Typography
+                align='center'
+                variant='h2'
+                >
+                Shopping Cart
+            </Typography>
+            {props.cart.map((item : itemProps) => {
+                return(
+                    <Typography>
+                        name: {item.name}
+                        price: {item.price}
+                        quantity: {item.quantity}
+                    </Typography>
+                )
+            })}
+            <Typography
+                align='center'
+                variant='h6'
+                >
+               Total
+            </Typography>
+            <Button>
+                Order
+            </Button>
+            <Button>
+                Pay Bill
+            </Button>
        </div>
     );
 }
