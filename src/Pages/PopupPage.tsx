@@ -1,38 +1,247 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import Dialog, { DialogProps } from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl, { formControlClasses } from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Box from '@mui/material/Box';
+import FormGroup from '@mui/material/FormGroup';
+import Checkbox from '@mui/material/Checkbox';
+
+const primaryColor = '#1976d2'
 
 export interface popupProps {
-   name: string;
-   price: number;
-   image: string;
-   rating: number;
-   ingrediants?: string[];
-   calories: number,
-   customizationOptions?: custimizationOptionProps[];
+  open: boolean,
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  name: string;
+  price: number;
+  image: string;
+  rating: number;
+  ingrediants?: string[];
+  calories: number;
+  customizationOptions?: custimizationOptionProps[];
 }
 
 export interface custimizationOptionProps {
-   componentType: customizationType;
-   label: string;
-   options: custimizationOptionsList[],
+  componentType: customizationType;
+  label: string;
+  summaryViewLabel: string;
+  options: custimizationOptionsList[]
 }
 
 export enum customizationType {
-   "single",
-   "multi"
+  "single",
+  "multi"
 }
 
 export interface custimizationOptionsList {
-   optionName: string,
-   price?: number
+  optionName: string,
+  price?: number
 }
 
-const page = () => {
-    return (
-       <div>
-          <h1>Popup</h1>
-          <p>Popup page body content</p>
-       </div>
-    );
+interface options {
+  subheaderlist: []
 }
- 
+
+interface subheader {
+  subheadername: string;
+  subheaderelements: string[];
+}
+
+const page = (props: popupProps) => {
+  console.log(props);
+  const [scroll, setScroll] = React.useState<DialogProps['scroll']>('body');
+  const [values, setValues] = React.useState({});
+  const options: JSX.Element[] = [];
+
+  const handleRadioChange = (label: string, event: React.ChangeEvent<HTMLInputElement>) => {
+    setValues(
+      {
+        ...values,
+        [label]: (event.target as HTMLInputElement).value
+      }
+    );
+  };
+
+  const handleCheckboxChange = (label: string, price: number = 0, event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event);
+    let tempValues: custimizationOptionsList[] = []
+    if ((values as any)[label]) {
+      tempValues = (values as any)[label];
+    } else {
+      tempValues = [];
+    }
+    if (event.target.checked) {
+      if (price !== 0) {
+        tempValues.push({ optionName: (event.target as HTMLInputElement).name, price: price });
+      } else {
+        tempValues.push({ optionName: (event.target as HTMLInputElement).name });
+      }
+    } else {
+      const newValues: custimizationOptionsList[] = [];
+      tempValues.forEach((value) => {
+        if (value.optionName !== (event.target as HTMLInputElement).name) {
+          console.log('test');
+          newValues.push(value);
+        }
+      })
+      tempValues = newValues;
+    }
+    setValues(
+      {
+        ...values,
+        [label]: tempValues,
+      }
+    );
+  };
+
+  console.log(values);
+
+  if (props.customizationOptions) {
+    props.customizationOptions.forEach((option) => {
+      console.log(option);
+      if (option.componentType === customizationType.single) {
+        const listOptions: JSX.Element[] = [];
+        option.options.forEach((listOption) => {
+          let label: JSX.Element = <label>{listOption.optionName}</label>;
+          let value: string = listOption.optionName;
+          if (listOption.price) {
+            label = <label>{listOption.optionName} <label style={{ marginLeft: '2rem' }}>+${listOption.price}</label></label>;
+            value = `${listOption.optionName}--${listOption.price}`
+          }
+          listOptions.push(
+            <FormControlLabel value={value} control={< Radio />} label={label} key={listOption.optionName} />
+          );
+        });
+        let defaultValue: string = option.options[0].optionName;
+        if (option.options[0].price) {
+          defaultValue = `${option.options[0].optionName}--${option.options[0].price}`
+        }
+        options.push(
+          <FormControl
+            key={option.label}
+            sx={{
+              marginBottom: '2rem',
+            }}
+          >
+            <FormLabel sx={{ color: primaryColor }} id="radio-buttons-group-label">{<b>{option.label}</b>}</FormLabel>
+            <RadioGroup
+              aria-labelledby="radio-buttons-group-label"
+              name="radio-buttons-group"
+              defaultValue={defaultValue}
+              onChange={(e) => handleRadioChange(option.summaryViewLabel, e)}
+              value={(values as any)[option.label]}
+            >
+              {listOptions}
+            </RadioGroup>
+          </FormControl>
+        );
+        options.push(<br></br>);
+      } else if (option.componentType === customizationType.multi) {
+        const listOptions: JSX.Element[] = [];
+        option.options.forEach((listOption) => {
+          let label: JSX.Element = <label>{listOption.optionName}</label>;
+          if (listOption.price) {
+            label = <label>{listOption.optionName} <label style={{ marginLeft: '2rem' }}>+${listOption.price}</label></label>;
+          }
+          listOptions.push(
+            <FormControlLabel control={<Checkbox name={listOption.optionName} onChange={(e) => handleCheckboxChange(option.summaryViewLabel, listOption.price, e)} />} label={label} key={listOption.optionName} />
+          );
+        });
+        options.push(
+          <FormControl
+            key={option.label}
+            sx={{
+              marginBottom: '2rem',
+            }}
+          >
+            <FormLabel sx={{ color: primaryColor }} id="radio-buttons-group-label">{<b>{option.label}</b>}</FormLabel>
+            <FormGroup>
+              {listOptions}
+            </FormGroup>
+          </FormControl >
+        );
+        options.push(<br></br>);
+      }
+    })
+  }
+
+  const handleClose = () => {
+    props.setOpen(false);
+  };
+
+  const descriptionElementRef = React.useRef<HTMLElement>(null);
+  React.useEffect(() => {
+    if (props.open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+
+      if (props.customizationOptions) {
+        props.customizationOptions.forEach((option) => {
+          if (option.componentType == customizationType.single) {
+            let defaultValue: string = option.options[0].optionName;
+            if (option.options[0].price) {
+              defaultValue = `${option.options[0].optionName}--${option.options[0].price}`
+            }
+            setValues(
+              {
+                ...values,
+                [option.summaryViewLabel]: defaultValue,
+              }
+            );
+          }
+        })
+      }
+    }
+  }, [props.open]);
+
+  const title = <div><label style={{ color: primaryColor, fontSize: "2rem", fontStyle: "bold" }}>{props.name}</label><br></br><label>{`$${props.price} `}</label></div>;
+
+  return (
+    <div>
+      <Dialog
+        fullWidth
+        maxWidth="sm"
+        open={props.open}
+        onClose={handleClose}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
+        <Box
+          component="img"
+          sx={{
+            height: '20rem',
+            width: '100%',
+          }}
+          alt={props.name}
+          src={props.image}
+        />
+        <DialogContent dividers={scroll === 'paper'}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+            {options}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Subscribe</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
+
 export default page;

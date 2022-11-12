@@ -1,0 +1,133 @@
+{
+    "menuItems": [
+        {
+            "Name": "Pizza",
+            "Price":  8.99,
+            "Image": "/images/pizza.jpg",
+            "Rating": 4,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 500,
+            "CustomizationOptions": [
+                {
+                    "ComponentType": "Single",
+                    "Label": "Select Cheese",
+                    "SummaryViewLabel": "Cheese",
+                    "Options": 
+                    [
+                        {"OptionName": "Mozzorella"},
+                        {"OptionName": "Cheddar"},
+                        {"OptionName": "Provolone"}
+                    ]
+                },
+                {
+                    "ComponentType": "Multi",
+                    "Label": "Extras",
+                    "SummaryViewLabel": "Extras",
+                    "Options": 
+                    [
+                        {"OptionName": "Extra Cheese", "Price": 0.99}
+                    ]
+                },
+                {
+                    "ComponentType": "Multi",
+                    "Label": "Select Toppings",
+                    "SummaryViewLabel": "Toppings",
+                    "Options": [
+                        {"OptionName": "Pepporoni" },
+                        {"OptionName": "Green Pepper" },
+                        {"OptionName": "Mushrooms" },
+                        {"OptionName": "Bacon", "Price": 0.99}
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Fries",
+            "Price":  4.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 500
+        },
+        {
+            "Name": "Large Fries",
+            "Price":  6.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 700
+        },
+        {
+            "Name": "Extra Large Fries",
+            "Price":  8.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 900
+        },
+        {
+            "Name": "small Fries",
+            "Price":  2.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 700
+        },
+        {
+            "Name": "Special Fries",
+            "Price":  10.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 700
+        },
+        {
+            "Name": "test 1",
+            "Price":  10.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 700
+        },
+        {
+            "Name": "test2",
+            "Price":  10.99,
+            "Image": "/images/fries.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Cheese", 
+                "Dough", 
+                "Tomato Sauce"
+            ],
+            "Calories": 700
+        }
+    ]
+}
