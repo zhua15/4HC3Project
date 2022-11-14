@@ -104,7 +104,7 @@ class App extends Component {
             <Route path="/" element={<Menu />} />
             {/* <Route path="/popup" element={<Popup {...popup} />} /> */}
             <Route path="/summary" element={<Summary />} />
-            <Route path="/cart" element={<Cart {...cart} />} />
+            {/*<Route path="/cart" element={<Cart {...cart} />} />*/}
           </Routes>
         </div>
       </HashRouter>

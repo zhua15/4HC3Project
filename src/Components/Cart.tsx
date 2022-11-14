@@ -26,8 +26,6 @@ const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
 };
 
-const container = window !== undefined ? () => window().document.body : undefined;
-
 const cart = (props: cartProps) => {
     return (
         <SwipeableDrawer
