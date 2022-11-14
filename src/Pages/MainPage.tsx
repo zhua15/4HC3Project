@@ -132,11 +132,6 @@ const page = () => {
             <Button onClick={() => handleClickOpen(1)}>scroll=paper</Button>
             <Button onClick={toggleDrawer()}>Open</Button>
             {open ? <Popup {...selectedItem} /> : null}
-            {openCart ? <Cart
-                cart={cart}
-                bleeding={56}
-                open={openCart}
-                toggleDrawer={toggleDrawer}/>: null}
             <h1>Menu</h1>
             <p>Menu page body content</p>
 
@@ -152,7 +147,7 @@ const page = () => {
                 )}
 
             </Grid>
-
+            <Cart cart={cart} bleeding={56} open={openCart} toggleDrawer={toggleDrawer}/>
         </div >
     );
 }
