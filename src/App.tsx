@@ -28,7 +28,9 @@ const cart: cartProps = {
       price: 0,
       quantity: 0
     } as itemProps
-  ]
+  ],
+  container: undefined,
+  bleeding: 56,
 }
 
 const customizationOptions: custimizationOptionProps[] = [

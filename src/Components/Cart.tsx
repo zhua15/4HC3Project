@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Typography } from '@mui/material';
+import { Button, SwipeableDrawer, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 export interface cartProps {
-    cart: itemProps[]
+    cart: itemProps[],
+    container: any,
+    bleeding: number
 }
 
 export interface itemProps {
@@ -18,9 +20,28 @@ export interface optionsProps {
     price: number;
 }
 
+const [open, setOpen] = React.useState(false);
+
+const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+};
+
+const container = window !== undefined ? () => window().document.body : undefined;
+
 const cart = (props: cartProps) => {
     return (
-       <div>
+        <SwipeableDrawer
+        container={props.container}
+        anchor="bottom"
+        open={open}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        swipeAreaWidth={props.bleeding}
+        disableSwipeToOpen={false}
+        ModalProps={{
+          keepMounted: true,
+        }}
+      >
             <Typography
                 align='center'
                 variant='h2'
@@ -58,7 +79,7 @@ const cart = (props: cartProps) => {
                     Pay Bill
                 </Button>
             </Box>
-       </div>
+       </SwipeableDrawer>
     );
 }
 
