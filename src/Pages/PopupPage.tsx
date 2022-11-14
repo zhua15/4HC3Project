@@ -29,15 +29,15 @@ export interface popupProps {
 }
 
 export interface custimizationOptionProps {
-  componentType: customizationType;
+  componentType: string;  //USE "Single" or "Multi" in json data file
   label: string;
   summaryViewLabel: string;
   options: custimizationOptionsList[]
 }
 
 export enum customizationType {
-  "single",
-  "multi"
+  Single = "Single",
+  Multi = "Multi"
 }
 
 export interface custimizationOptionsList {
@@ -106,7 +106,7 @@ const page = (props: popupProps) => {
   if (props.customizationOptions) {
     props.customizationOptions.forEach((option) => {
       console.log(option);
-      if (option.componentType === customizationType.single) {
+      if (option.componentType === 'Single') {
         const listOptions: JSX.Element[] = [];
         option.options.forEach((listOption) => {
           let label: JSX.Element = <label>{listOption.optionName}</label>;
@@ -143,7 +143,7 @@ const page = (props: popupProps) => {
           </FormControl>
         );
         options.push(<br></br>);
-      } else if (option.componentType === customizationType.multi) {
+      } else if (option.componentType === 'Multi') {
         const listOptions: JSX.Element[] = [];
         option.options.forEach((listOption) => {
           let label: JSX.Element = <label>{listOption.optionName}</label>;
@@ -186,7 +186,7 @@ const page = (props: popupProps) => {
 
       if (props.customizationOptions) {
         props.customizationOptions.forEach((option) => {
-          if (option.componentType == customizationType.single) {
+          if (option.componentType == 'Single') {
             let defaultValue: string = option.options[0].optionName;
             if (option.options[0].price) {
               defaultValue = `${option.options[0].optionName}--${option.options[0].price}`

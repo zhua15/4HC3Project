@@ -33,7 +33,7 @@ const cart: cartProps = {
 
 const customizationOptions: custimizationOptionProps[] = [
   {
-    componentType: customizationType.single,
+    componentType: customizationType.Single,
     label: "Select Cheese",
     summaryViewLabel: "Cheese",
     options: [
@@ -51,7 +51,7 @@ const customizationOptions: custimizationOptionProps[] = [
     ] as custimizationOptionsList[]
   },
   {
-    componentType: customizationType.multi,
+    componentType: customizationType.Multi,
     label: "Select Toppings",
     summaryViewLabel: "Toppings",
     options: [
