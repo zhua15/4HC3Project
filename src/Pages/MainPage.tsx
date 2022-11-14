@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 
 const customizationOptions: custimizationOptionProps[] = [
     {
-        componentType: customizationType.single,
+        componentType: 'Single',
         label: "Select Cheese",
         summaryViewLabel: "Cheese",
         options: [
@@ -25,7 +25,7 @@ const customizationOptions: custimizationOptionProps[] = [
         ] as custimizationOptionsList[]
     },
     {
-        componentType: customizationType.multi,
+        componentType: 'Multi',
         label: "Select Toppings",
         summaryViewLabel: "Toppings",
         options: [
@@ -59,8 +59,9 @@ const page = () => {
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
 
-    const handleClickOpen = (n:number) => {
+    const handleClickOpen = (n: number) => {
         setOpen(true);
+        console.log(menuItem.menuItems[n].customizationOptions)
         const popup: popupProps = {
             open: true,
             setOpen: setOpen,
@@ -71,7 +72,8 @@ const page = () => {
             rating: menuItem.menuItems[n].Rating,
             ingrediants: menuItem.menuItems[n].Ingrediants,
             calories: menuItem.menuItems[n].Calories,
-
+            customizationOptions: menuItem.menuItems[n].customizationOptions,
+            // customizationOptions: customizationOptions
             // open: true,
             // setOpen: setOpen,
             // name: "Pizza",
@@ -86,7 +88,6 @@ const page = () => {
             // calories: 500,
 
             //TODO: other customization options, now it is always pizza
-            customizationOptions: customizationOptions
         }
         setSelectedItem(popup);
     };
@@ -103,21 +104,21 @@ const page = () => {
             {open ? <Popup {...selectedItem} /> : null}
             <h1>Menu</h1>
             <p>Menu page body content</p>
-            
-        {/* this part doesnt work idk why, it should display multiple items on same row */}
+
+            {/* this part doesnt work idk why, it should display multiple items on same row */}
             {/* i try grid and row/col they all dont work */}
             <Grid container spacing={2} direction='row'>
                 {/* <Grid item md={3}> */}
-            {[...Array(itemNum)].map((elementInArray, index) => (
-                <Grid item xs={3}>
-                    <ItemCard n={index} handleClick={handleClickOpen} addToCart={addToCart}/>
-                </Grid>
+                {[...Array(itemNum)].map((elementInArray, index) => (
+                    <Grid item xs={3}>
+                        <ItemCard n={index} handleClick={handleClickOpen} addToCart={addToCart} />
+                    </Grid>
                 )
-            )}
-            
+                )}
+
             </Grid>
-           
-        </div>
+
+        </div >
     );
 }
 

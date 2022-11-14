@@ -11,36 +11,36 @@
                 "Tomato Sauce"
             ],
             "Calories": 500,
-            "CustomizationOptions": [
+            "customizationOptions": [
                 {
-                    "ComponentType": "Single",
-                    "Label": "Select Cheese",
-                    "SummaryViewLabel": "Cheese",
-                    "Options": 
+                    "componentType": "Single",
+                    "label": "Select Cheese",
+                    "summaryViewLabel": "Cheese",
+                    "options": 
                     [
-                        {"OptionName": "Mozzorella"},
-                        {"OptionName": "Cheddar"},
-                        {"OptionName": "Provolone"}
+                        {"optionName": "Mozzorella"},
+                        {"optionName": "Cheddar"},
+                        {"optionName": "Provolone"}
                     ]
                 },
                 {
-                    "ComponentType": "Multi",
-                    "Label": "Extras",
-                    "SummaryViewLabel": "Extras",
-                    "Options": 
+                    "componentType": "Multi",
+                    "label": "Extras",
+                    "summaryViewLabel": "Extras",
+                    "options": 
                     [
-                        {"OptionName": "Extra Cheese", "Price": 0.99}
+                        {"optionName": "Extra Cheese", "Price": 0.99}
                     ]
                 },
                 {
-                    "ComponentType": "Multi",
-                    "Label": "Select Toppings",
-                    "SummaryViewLabel": "Toppings",
-                    "Options": [
-                        {"OptionName": "Pepporoni" },
-                        {"OptionName": "Green Pepper" },
-                        {"OptionName": "Mushrooms" },
-                        {"OptionName": "Bacon", "Price": 0.99}
+                    "componentType": "Multi",
+                    "label": "Select Toppings",
+                    "summaryViewLabel": "Toppings",
+                    "options": [
+                        {"optionName": "Pepporoni" },
+                        {"optionName": "Green Pepper" },
+                        {"optionName": "Mushrooms" },
+                        {"optionName": "Bacon", "Price": 0.99}
                     ]
                 }
             ]
