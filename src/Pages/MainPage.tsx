@@ -109,20 +109,16 @@ const page = () => {
             
         {/* this part doesnt work idk why, it should display multiple items on same row */}
             {/* i try grid and row/col they all dont work */}
-            <Row md={2} xs={1} className="g-3">
-            {/* <Grid> */}
+            <Grid container spacing={2} direction='row'>
                 {/* <Grid item md={3}> */}
             {[...Array(itemNum)].map((elementInArray, index) => (
-                <Col key={index}>
-                {/* // <Grid item md={3}> */}
+                <Grid item xs={3}>
                     <ItemCard n={index} handleClick={handleClickOpen} addToCart={addToCart}/>
-                </Col>
-               
+                </Grid>
                 )
             )}
             
-            {/* </Grid> */}
-            </Row>
+            </Grid>
            
         </div>
     );
