@@ -1,10 +1,16 @@
 import React from 'react';
-import { Button, SwipeableDrawer, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Global } from '@emotion/react';
+import { styled } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { grey } from '@mui/material/colors';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
+import Typography from '@mui/material/Typography';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 export interface cartProps {
     cart: itemProps[],
-    container: any,
     bleeding: number
 }
 
@@ -20,64 +26,120 @@ export interface optionsProps {
     price: number;
 }
 
-const [open, setOpen] = React.useState(false);
+const Root = styled('div')(({ theme }) => ({
+    height: '100%',
+    backgroundColor:
+      theme.palette.mode === 'dark' ? grey[100] : theme.palette.background.default,
+}));
 
-const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-};
+const StyledBox = styled(Box)(({ theme }) => ({
+backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[800],
+}));
+
+const Puller = styled(Box)(({ theme }) => ({
+width: 30,
+height: 6,
+backgroundColor: theme.palette.mode === 'dark' ? grey[300] : grey[900],
+borderRadius: 3,
+position: 'absolute',
+top: 8,
+left: 'calc(50% - 15px)',
+}));
 
 const cart = (props: cartProps) => {
+    const [open, setOpen] = React.useState(true);
+
+    const toggleDrawer = () => () => {
+        setOpen(!open);
+    };
+
     return (
-        <SwipeableDrawer
-        container={props.container}
-        anchor="bottom"
-        open={open}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-        swipeAreaWidth={props.bleeding}
-        disableSwipeToOpen={false}
-        ModalProps={{
-          keepMounted: true,
-        }}
-      >
-            <Typography
-                align='center'
-                variant='h2'
-                >
-                Shopping Cart
-            </Typography>
-            {props.cart.map((item : itemProps) => {
-                return(
-                    <Typography
-                        align='center'>
-                        name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        quantity: {item.quantity}
-                    </Typography>
-                )
-            })}
-            <Typography
-                align='center'
-                variant='h6'
-                >
-                Total: {props.cart.reduce((sum: number, item: itemProps) => 
-                sum + (item.price * item.quantity), 0)}
-            </Typography>
-            <Box textAlign='center'>
-                <Button variant='contained'>
-                    Order
-                </Button>
+        <Root>
+            <CssBaseline />
+            <Global
+                styles={{
+                '.MuiDrawer-root > .MuiPaper-root': {
+                    height: `calc(50% - ${props.bleeding}px)`,
+                    overflow: 'visible',
+                },
+                }}
+            />
+            <Box sx={{ textAlign: 'center', pt: 1 }}>
+                <Button onClick={toggleDrawer()}>Open</Button>
             </Box>
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            <Box textAlign='center'>
-                <Button variant='contained'>
-                    Pay Bill
-                </Button>
-            </Box>
-       </SwipeableDrawer>
+            <SwipeableDrawer
+                anchor="bottom"
+                open={open}
+                onClose={toggleDrawer()}
+                onOpen={toggleDrawer()}
+                swipeAreaWidth={props.bleeding}
+                disableSwipeToOpen={false}
+                ModalProps={{
+                keepMounted: true,
+                }}
+            >
+                <StyledBox
+                sx={{
+                    position: 'absolute',
+                    top: -props.bleeding,
+                    borderTopLeftRadius: 8,
+                    borderTopRightRadius: 8,
+                    visibility: 'visible',
+                    right: 0,
+                    left: 0,
+                }}
+                >
+                <Puller />
+                <Typography sx={{ p: 2, color: 'text.secondary' }}>Cart</Typography>
+                </StyledBox>
+                <StyledBox
+                sx={{
+                    px: 2,
+                    pb: 2,
+                    height: '100%',
+                    overflow: 'auto',
+                }}
+                >
+                <Typography
+                    align='center'
+                    variant='h2'
+                    >
+                    Shopping Cart
+                </Typography>
+                {props.cart.map((item : itemProps) => {
+                    return(
+                        <Typography
+                            align='center'>
+                            name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            quantity: {item.quantity}
+                        </Typography>
+                    )
+                })}
+                <Typography
+                    align='center'
+                    variant='h6'
+                    >
+                    Total: {props.cart.reduce((sum: number, item: itemProps) => 
+                    sum + (item.price * item.quantity), 0)}
+                </Typography>
+                <Box textAlign='center'>
+                    <Button variant='contained'>
+                        Order
+                    </Button>
+                </Box>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <Box textAlign='center'>
+                    <Button variant='contained'>
+                        Pay Bill
+                    </Button>
+                </Box>
+                </StyledBox>
+            </SwipeableDrawer>
+        </Root>
     );
 }
 
