@@ -11,7 +11,9 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 export interface cartProps {
     cart: itemProps[],
-    bleeding: number
+    bleeding: number,
+    open: boolean,
+    toggleDrawer: any,
 }
 
 export interface itemProps {
@@ -23,7 +25,7 @@ export interface itemProps {
 
 export interface optionsProps {
     name: string;
-    price: number;
+    price?: number;
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -47,12 +49,6 @@ left: 'calc(50% - 15px)',
 }));
 
 const cart = (props: cartProps) => {
-    const [open, setOpen] = React.useState(true);
-
-    const toggleDrawer = () => () => {
-        setOpen(!open);
-    };
-
     return (
         <Root>
             <CssBaseline />
@@ -64,14 +60,11 @@ const cart = (props: cartProps) => {
                 },
                 }}
             />
-            <Box sx={{ textAlign: 'center', pt: 1 }}>
-                <Button onClick={toggleDrawer()}>Open</Button>
-            </Box>
             <SwipeableDrawer
                 anchor="bottom"
-                open={open}
-                onClose={toggleDrawer()}
-                onOpen={toggleDrawer()}
+                open={props.open}
+                onClose={props.toggleDrawer()}
+                onOpen={props.toggleDrawer()}
                 swipeAreaWidth={props.bleeding}
                 disableSwipeToOpen={false}
                 ModalProps={{
@@ -120,7 +113,7 @@ const cart = (props: cartProps) => {
                     align='center'
                     variant='h6'
                     >
-                    Total: {props.cart.reduce((sum: number, item: itemProps) => 
+                    Total: ${props.cart.reduce((sum: number, item: itemProps) => 
                     sum + (item.price * item.quantity), 0)}
                 </Typography>
                 <Box textAlign='center'>
@@ -128,10 +121,6 @@ const cart = (props: cartProps) => {
                         Order
                     </Button>
                 </Box>
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
                 <Box textAlign='center'>
                     <Button variant='contained'>
                         Pay Bill

@@ -5,33 +5,6 @@ import Popup, { custimizationOptionProps, custimizationOptionsList, customizatio
 import Summary from './Pages/SummaryPage';
 import Cart, { cartProps, itemProps, optionsProps } from './Components/Cart'
 
-const cart: cartProps = {
-  cart: [
-    {
-      name: "pizza",
-      price: 10,
-      quantity: 2,
-      options: [] as optionsProps[]
-    } as itemProps,
-    {
-      name: "cat food",
-      price: 100,
-      quantity: 30
-    } as itemProps,
-    {
-      name: "food",
-      price: 69,
-      quantity: 420
-    } as itemProps,
-    {
-      name: "edible food",
-      price: 0,
-      quantity: 0
-    } as itemProps
-  ],
-  bleeding: 56,
-}
-
 const customizationOptions: custimizationOptionProps[] = [
   {
     componentType: customizationType.Single,
@@ -103,7 +76,7 @@ class App extends Component {
             <Route path="/" element={<Menu />} />
             {/* <Route path="/popup" element={<Popup {...popup} />} /> */}
             <Route path="/summary" element={<Summary />} />
-            {<Route path="/cart" element={<Cart {...cart} />} />}
+            {/* <Route path="/cart" element={<Cart {...cart} />} /> */}
           </Routes>
         </div>
       </HashRouter>

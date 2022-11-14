@@ -4,6 +4,7 @@ import Popup, { custimizationOptionProps, custimizationOptionsList, customizatio
 import ItemCard from "../Components/MenuItemCard";
 import * as menuItem from './../data/menuData.json';
 import Grid from "@mui/material/Grid";
+import Cart, { itemProps, optionsProps } from "../Components/Cart";
 
 const customizationOptions: custimizationOptionProps[] = [
     {
@@ -52,10 +53,38 @@ const customizationOptions: custimizationOptionProps[] = [
     }
 ]
 
+const cart = [
+    {
+    name: "pizza",
+    price: 10,
+    quantity: 2,
+    options: [] as optionsProps[]
+    } as itemProps,
+    {
+    name: "cat food",
+    price: 100,
+    quantity: 30
+    } as itemProps,
+    {
+    name: "food",
+    price: 69,
+    quantity: 420
+    } as itemProps,
+    {
+    name: "edible food",
+    price: 0,
+    quantity: 0
+    } as itemProps
+]
+
 const page = () => {
     const [open, setOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
+    const [openCart, setOpenCart] = React.useState(false);
 
+    const toggleDrawer = () => () => {
+        setOpenCart(!openCart);
+    };
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
 
@@ -101,7 +130,13 @@ const page = () => {
     return (
         <div>
             <Button onClick={() => handleClickOpen(1)}>scroll=paper</Button>
+            <Button onClick={toggleDrawer()}>Open</Button>
             {open ? <Popup {...selectedItem} /> : null}
+            {openCart ? <Cart
+                cart={cart}
+                bleeding={56}
+                open={openCart}
+                toggleDrawer={toggleDrawer}/>: null}
             <h1>Menu</h1>
             <p>Menu page body content</p>
 
