@@ -6,16 +6,6 @@ import * as menuItem from './../data/menuData.json';
 import Grid from "@material-ui/core/Grid";
 
 import {Row, Col} from "react-bootstrap"
-// export interface foodProps {
-//     name: string;
-//     price: number;
-//     quantity: number;
-//     image: string;
-//     rating: number;
-//     ingrediants?: string[];
-//     calories: number,
-//     customizationOptions?: custimizationOptionProps[];
-//  }
 
 
 const customizationOptions: custimizationOptionProps[] = [
@@ -118,6 +108,7 @@ const page = () => {
             
 
         {/* this part doesnt work idk why, it should display multiple items on same row */}
+            {/* i try grid and row/col they all dont work */}
             <Row md={2} xs={1} className="g-3">
             {/* <Grid> */}
                 {/* <Grid item md={3}> */}

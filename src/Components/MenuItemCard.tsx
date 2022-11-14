@@ -30,21 +30,12 @@ export default function ItemCard(props: Props) {
                 alt="dish image"
             />
             <CardContent>
-                {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    Rate: {item.Rating}
-                </Typography> */}
                 <Typography variant="h5">
                     {item.Name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     $ {item.Price}
                 </Typography>
-                {/* <Typography variant="body2">
-                    {item.Ingrediants.toString()}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {item.Calories} kcal
-                </Typography> */}
             </CardContent>
             <CardActions>
                 <Button size="small" onClick={()=>props.handleClick(props.n)}>See Details</Button>
