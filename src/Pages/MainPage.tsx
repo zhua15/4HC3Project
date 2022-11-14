@@ -61,11 +61,13 @@ const page = () => {
 
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
+
     const handleClickOpen = (n:number) => {
         setOpen(true);
         const popup: popupProps = {
             open: true,
             setOpen: setOpen,
+
             name: menuItem.menuItems[n].Name,
             price: menuItem.menuItems[n].Price,
             image: menuItem.menuItems[n].Image,
@@ -86,7 +88,7 @@ const page = () => {
             // ],
             // calories: 500,
 
-            //TODO: other customization options
+            //TODO: other customization options, now it is always pizza
             customizationOptions: customizationOptions
         }
         setSelectedItem(popup);
@@ -105,8 +107,6 @@ const page = () => {
             <h1>Menu</h1>
             <p>Menu page body content</p>
             
-            
-
         {/* this part doesnt work idk why, it should display multiple items on same row */}
             {/* i try grid and row/col they all dont work */}
             <Row md={2} xs={1} className="g-3">
