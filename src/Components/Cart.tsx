@@ -25,7 +25,7 @@ export interface itemProps {
 
 export interface optionsProps {
     name: string;
-    price?: number;
+    price: number;
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -91,12 +91,24 @@ const cart = (props: cartProps) => {
                 </Typography>
                 {props.cart.map((item : itemProps) => {
                     return(
-                        <Typography
-                            align='center'>
-                            name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            quantity: {item.quantity}
-                        </Typography>
+                        <div>
+                            <Typography
+                                align='center'>
+                                name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                quantity: {item.quantity}
+                            </Typography>
+                            
+                            {item.options ? item.options.map((option : optionsProps) => { 
+                                return(
+                                    <Typography
+                                        align='center'>
+                                        name: {option.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        price: ${option.price}
+                                    </Typography>
+                                )
+                            }) : null}
+                        </div>
                     )
                 })}
                 <Typography
@@ -104,7 +116,11 @@ const cart = (props: cartProps) => {
                     variant='h6'
                     >
                     Total: ${props.cart.reduce((sum: number, item: itemProps) => 
-                    sum + (item.price * item.quantity), 0)}
+                    sum + (item.quantity * (item.price + (
+                        item.options ? (
+                            item.options.reduce((optionSum: number, optionItem) => optionSum + optionItem.price, 0)
+                        ) as number : 0
+                    ))), 0)}
                 </Typography>
                 <Box textAlign='center'>
                     <Button variant='contained'>
