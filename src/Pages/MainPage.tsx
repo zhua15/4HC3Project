@@ -59,7 +59,7 @@ const page = () => {
     const [open, setOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
     const [openCart, setOpenCart] = React.useState(false);
-    const [cart, setCart] = React.useState([]);
+    const [cart, setCart] = React.useState([] as itemProps[]);
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
