@@ -8,6 +8,8 @@ import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Grid } from '@mui/material';
 
 export interface cartProps {
     cart: itemProps[],
@@ -92,22 +94,50 @@ const cart = (props: cartProps) => {
                 {props.cart.map((item : itemProps) => {
                     return(
                         <div>
-                            <Typography
-                                align='center'>
-                                name: {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                price: ${item.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                quantity: {item.quantity}
-                            </Typography>
-                            
-                            {item.options ? item.options.map((option : optionsProps) => { 
-                                return(
+                            <Box textAlign='center'>
+                                <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap',
+                                    columnGap: '50px',
+                                }}>
+                                    <DeleteIcon/>
                                     <Typography
                                         align='center'>
-                                        name: {option.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        price: ${option.price}
+                                        name: {item.name}
                                     </Typography>
-                                )
-                            }) : null}
+                                    <Typography
+                                        align='center'>
+                                        price: ${item.price}
+                                    </Typography>
+                                    <Typography
+                                        align='center'>
+                                        quantity: {item.quantity}
+                                    </Typography>
+                                </div>
+                                
+                                {item.options ? item.options.map((option : optionsProps) => { 
+                                    return(
+                                        <div style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            flexWrap: 'wrap',
+                                            columnGap: '50px',
+                                        }}>
+                                            <div/>
+                                            <div/>
+                                            <Typography
+                                                align='center'>
+                                                name: {option.name}
+                                            </Typography>
+                                            <Typography
+                                                align='center'>
+                                                price: ${option.price}
+                                            </Typography>
+                                        </div>
+                                    )
+                                }) : null}
+                            </Box>
                         </div>
                     )
                 })}
@@ -115,12 +145,12 @@ const cart = (props: cartProps) => {
                     align='center'
                     variant='h6'
                     >
-                    Total: ${props.cart.reduce((sum: number, item: itemProps) => 
+                    Total: ${(props.cart.reduce((sum: number, item: itemProps) => 
                     sum + (item.quantity * (item.price + (
                         item.options ? (
                             item.options.reduce((optionSum: number, optionItem) => optionSum + optionItem.price, 0)
                         ) as number : 0
-                    ))), 0)}
+                    ))), 0)).toFixed(2)}
                 </Typography>
                 <Box textAlign='center'>
                     <Button variant='contained'>
