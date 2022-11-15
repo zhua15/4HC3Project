@@ -5,6 +5,8 @@ import ItemCard from "../Components/MenuItemCard";
 import * as menuItem from './../data/menuData.json';
 import Grid from "@mui/material/Grid";
 import Cart, { itemProps, optionsProps } from "../Components/Cart";
+import { Box } from '@mui/system';
+import { ShoppingCart } from '@mui/icons-material';
 
 const customizationOptions: custimizationOptionProps[] = [
     {
@@ -106,8 +108,16 @@ const page = () => {
     //Button can be removed but need to add an onClick function to all the menu cards, keep the line to render the popup as well
     return (
         <div>
-            <Button onClick={() => handleClickOpen(1)}>scroll=paper</Button>
-            <Button onClick={toggleDrawer()}>Open</Button>
+            <Box
+            m={1}
+            //margin
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="flex-end"
+            >
+                <Button variant='contained' onClick={toggleDrawer()}><ShoppingCart/></Button>
+            </Box>
+            
             {open ? <Popup {...selectedItem} /> : null}
             <h1>Menu</h1>
             <p>Menu page body content</p>
