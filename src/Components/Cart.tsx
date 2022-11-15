@@ -110,8 +110,7 @@ const cart = (props: cartProps) => {
                     <Button variant='contained'>
                         Order
                     </Button>
-                </Box>
-                <Box textAlign='center'>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button variant='contained'>
                         Pay Bill
                     </Button>
