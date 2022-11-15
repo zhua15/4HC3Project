@@ -238,7 +238,7 @@ const page = (props: popupProps) => {
         <Box
           component="img"
           sx={{
-            height: '20rem',
+            height: '25rem',
             width: '100%',
           }}
           alt={props.name}

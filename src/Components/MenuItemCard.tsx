@@ -24,7 +24,7 @@ export default function ItemCard(props: Props) {
         <Card sx={{ maxWidth: 275 }}>
             <CardMedia
                 component="img"
-                height="150"
+                height="200"
                 image={item.Image}
                 alt="dish image"
             />

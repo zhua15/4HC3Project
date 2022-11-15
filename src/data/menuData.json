@@ -58,76 +58,298 @@
             "Calories": 500
         },
         {
-            "Name": "Large Fries",
+            "Name": "Hamburger",
             "Price":  6.99,
-            "Image": "/images/fries.png",
-            "Rating": 4.5,
+            "Image": "/images/ham.png",
+            "Rating": 4.7,
             "Ingrediants": [
                 "Cheese", 
                 "Dough", 
                 "Tomato Sauce"
             ],
-            "Calories": 700
+            "Calories": 700,
+            "customizationOptions": [
+                {
+                "componentType": "Multi",
+                "label": "Select Extra Toppings",
+                "summaryViewLabel": "Extras",
+                "options": [
+                    {"optionName": "Cheese", "Price": 0.99 },
+                    {"optionName": "Onions" },
+                    {"optionName": "Pickles" },
+                    {"optionName": "Lettuce"}
+                ]
+            }
+        ]
         },
         {
-            "Name": "Extra Large Fries",
+            "Name": "Wrap",
             "Price":  8.99,
-            "Image": "/images/fries.png",
-            "Rating": 4.5,
+            "Image": "/images/wrap.jpg",
+            "Rating": 4.3,
             "Ingrediants": [
-                "Cheese", 
-                "Dough", 
-                "Tomato Sauce"
+                "Lettuce", 
+                "Mayo Sauce"
             ],
             "Calories": 900
         },
         {
-            "Name": "small Fries",
+            "Name": "Poutine",
+            "Price":  6.19,
+            "Image": "/images/poutine.png",
+            "Rating": 4.8,
+            "Ingrediants": [
+                "Fries"
+            ],
+            "Calories": 600,
+            "customizationOptions": [
+                {
+                "componentType": "Multi",
+                "label": "Select Sauce",
+                "summaryViewLabel": "Extras",
+                "options": [
+                    {"optionName": "Gravy"},
+                    {"optionName": "Cheese Curds"}
+                ]
+            }
+        ]
+        },
+        {
+            "Name": "6 pcs Chicken Nuggets",
+            "Price":  7.99,
+            "Image": "/images/chicken6.png",
+            "Rating": 4.8,
+            "Ingrediants": [
+                "Chicken"
+            ],
+            "Calories": 700,
+            "customizationOptions": [
+                {
+                "componentType": "Multi",
+                "label": "Select Sauce",
+                "summaryViewLabel": "Extras",
+                "options": [
+                    {"optionName": "Spicy Habanero"},
+                    {"optionName": "BBQ Sauce" },
+                    {"optionName": "Honey" },
+                    {"optionName": "Hot Mustard"}
+                ]
+            }
+        ]
+        },{
+            "Name": "10 pcs Chicken Nuggets",
+            "Price":  10.99,
+            "Image": "/images/chicken10.png",
+            "Rating": 4.8,
+            "Ingrediants": [
+                "Chicken"
+            ],
+            "Calories": 900,
+            "customizationOptions": [
+                {
+                "componentType": "Multi",
+                "label": "Select Sauce",
+                "summaryViewLabel": "Extras",
+                "options": [
+                    {"optionName": "Spicy Habanero"},
+                    {"optionName": "BBQ Sauce" },
+                    {"optionName": "Honey" },
+                    {"optionName": "Hot Mustard"}
+                ]
+            }
+        ]
+        },{
+            "Name": "20 pcs Chicken Nuggets",
+            "Price":  17.99,
+            "Image": "/images/chicken20.png",
+            "Rating": 4.8,
+            "Ingrediants": [
+                "Chicken"
+            ],
+            "Calories": 1400,
+            "customizationOptions": [
+                {
+                "componentType": "Multi",
+                "label": "Select Sauce",
+                "summaryViewLabel": "Extras",
+                "options": [
+                    {"optionName": "Spicy Habanero"},
+                    {"optionName": "BBQ Sauce" },
+                    {"optionName": "Honey" },
+                    {"optionName": "Hot Mustard"}
+                ]
+            }
+        ]
+        },
+        {
+            "Name": "Chocolate Cookie",
             "Price":  2.99,
-            "Image": "/images/fries.png",
+            "Image": "/images/cookie.png",
             "Rating": 4.5,
             "Ingrediants": [
-                "Cheese", 
-                "Dough", 
-                "Tomato Sauce"
+                "Chocolate"
             ],
-            "Calories": 700
+            "Calories": 100
         },
         {
-            "Name": "Special Fries",
-            "Price":  10.99,
-            "Image": "/images/fries.png",
+            "Name": "Apple pie",
+            "Price":  1.99,
+            "Image": "/images/pie.png",
             "Rating": 4.5,
             "Ingrediants": [
-                "Cheese", 
-                "Dough", 
-                "Tomato Sauce"
+                "Apple"
             ],
-            "Calories": 700
+            "Calories": 100
         },
         {
-            "Name": "test 1",
-            "Price":  10.99,
-            "Image": "/images/fries.png",
+            "Name": "Donut",
+            "Price":  2.99,
+            "Image": "/images/donut.png",
             "Rating": 4.5,
             "Ingrediants": [
-                "Cheese", 
-                "Dough", 
-                "Tomato Sauce"
+                "Sugar"
             ],
-            "Calories": 700
+            "Calories": 100
         },
         {
-            "Name": "test2",
-            "Price":  10.99,
-            "Image": "/images/fries.png",
+            "Name": "Muffin",
+            "Price":  2.99,
+            "Image": "/images/muffin.png",
             "Rating": 4.5,
             "Ingrediants": [
-                "Cheese", 
-                "Dough", 
-                "Tomato Sauce"
+                "Sugar"
             ],
-            "Calories": 700
+            "Calories": 100
+        },
+        {
+            "Name": "Coffee",
+            "Price":  2.09,
+            "Image": "/images/coffee.png",
+            "Rating": 4.5,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Latte",
+            "Price":  2.99,
+            "Image": "/images/latte.png",
+            "Rating": 4.7,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Cappuccino",
+            "Price":  2.99,
+            "Image": "/images/cappuccino.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Americano",
+            "Price":  1.99,
+            "Image": "/images/americano.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Coke",
+            "Price":  1.99,
+            "Image": "/images/coke.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Diet Coke",
+            "Price":  1.99,
+            "Image": "/images/dietcoke.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Sprite",
+            "Price":  1.99,
+            "Image": "/images/sprite.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Iced Tea",
+            "Price":  1.99,
+            "Image": "/images/icedtea.jpeg",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Orange Juice",
+            "Price":  1.99,
+            "Image": "/images/orangejuice.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Milk",
+            "Price":  1.99,
+            "Image": "/images/milk.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Water",
+            "Price":  1.99,
+            "Image": "/images/water.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "h2o"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Strawberry Ice Cream",
+            "Price":  1.99,
+            "Image": "/images/SIC.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
+        },
+        {
+            "Name": "Chocolate Ice Cream",
+            "Price":  1.99,
+            "Image": "/images/CIC.png",
+            "Rating": 4.3,
+            "Ingrediants": [
+                "Sugar"
+            ],
+            "Calories": 100
         }
     ]
 }
