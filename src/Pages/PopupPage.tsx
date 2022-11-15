@@ -13,12 +13,14 @@ import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
+import { itemProps } from '../Components/Cart';
 
 const primaryColor = '#1976d2'
 
 export interface popupProps {
-  open: boolean,
+  open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setCart: any
   name: string;
   price: number;
   image: string;

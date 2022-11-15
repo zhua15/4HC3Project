@@ -35,7 +35,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[800],
+    backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[500],
 }));
 
 const Puller = styled(Box)(({ theme }) => ({
@@ -73,26 +73,16 @@ const cart = (props: cartProps) => {
             >
                 <StyledBox
                 sx={{
-                    position: 'absolute',
-                    top: -props.bleeding,
-                    borderTopLeftRadius: 8,
-                    borderTopRightRadius: 8,
-                    visibility: 'visible',
-                    right: 0,
-                    left: 0,
-                }}
-                >
-                <Puller />
-                <Typography sx={{ p: 2, color: 'text.secondary' }}>Cart</Typography>
-                </StyledBox>
-                <StyledBox
-                sx={{
                     px: 2,
                     pb: 2,
                     height: '100%',
                     overflow: 'auto',
                 }}
                 >
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
                 <Typography
                     align='center'
                     variant='h2'

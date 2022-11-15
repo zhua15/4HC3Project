@@ -53,35 +53,11 @@ const customizationOptions: custimizationOptionProps[] = [
     }
 ]
 
-const cart = [
-    {
-    name: "pizza",
-    price: 10,
-    quantity: 2,
-    options: [] as optionsProps[]
-    } as itemProps,
-    {
-    name: "cat food",
-    price: 100,
-    quantity: 30
-    } as itemProps,
-    {
-    name: "food",
-    price: 69,
-    quantity: 420
-    } as itemProps,
-    {
-    name: "edible food",
-    price: 0,
-    quantity: 0
-    } as itemProps
-]
-
 const page = () => {
     const [open, setOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
     const [openCart, setOpenCart] = React.useState(false);
-
+    const [cart, setCart] = React.useState([]);
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
@@ -102,6 +78,7 @@ const page = () => {
             ingrediants: menuItem.menuItems[n].Ingrediants,
             calories: menuItem.menuItems[n].Calories,
             customizationOptions: menuItem.menuItems[n].customizationOptions,
+            setCart: setCart,
             // customizationOptions: customizationOptions
             // open: true,
             // setOpen: setOpen,
@@ -147,7 +124,7 @@ const page = () => {
                 )}
 
             </Grid>
-            <Cart cart={cart} bleeding={56} open={openCart} toggleDrawer={toggleDrawer}/>
+            <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer}/>
         </div >
     );
 }
