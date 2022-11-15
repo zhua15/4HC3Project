@@ -13,7 +13,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
-import { itemProps } from '../Components/Cart';
+import { itemProps, optionsProps } from '../Components/Cart';
 
 const primaryColor = '#1976d2'
 
@@ -21,6 +21,7 @@ export interface popupProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   setCart: any
+  cart: any,
   name: string;
   price: number;
   image: string;
@@ -57,9 +58,8 @@ interface subheader {
 }
 
 const page = (props: popupProps) => {
-  console.log(props);
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('body');
-  const [values, setValues] = React.useState({});
+  const [values, setValues] = React.useState({} as any);
   const options: JSX.Element[] = [];
 
   const handleRadioChange = (label: string, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +72,6 @@ const page = (props: popupProps) => {
   };
 
   const handleCheckboxChange = (label: string, price: number = 0, event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event);
     let tempValues: custimizationOptionsList[] = []
     if ((values as any)[label]) {
       tempValues = (values as any)[label];
@@ -89,7 +88,6 @@ const page = (props: popupProps) => {
       const newValues: custimizationOptionsList[] = [];
       tempValues.forEach((value) => {
         if (value.optionName !== (event.target as HTMLInputElement).name) {
-          console.log('test');
           newValues.push(value);
         }
       })
@@ -103,11 +101,8 @@ const page = (props: popupProps) => {
     );
   };
 
-  console.log(values);
-
   if (props.customizationOptions) {
     props.customizationOptions.forEach((option) => {
-      console.log(option);
       if (option.componentType === 'Single') {
         const listOptions: JSX.Element[] = [];
         option.options.forEach((listOption) => {
@@ -207,6 +202,27 @@ const page = (props: popupProps) => {
 
   const title = <div><label style={{ color: primaryColor, fontSize: "2rem", fontStyle: "bold" }}>{props.name}</label><br></br><label>{`$${props.price} `}</label></div>;
 
+  const handleSubmit = () => {
+    const tempItem = { name: props.name, quantity: 1, price: props.price } as itemProps;
+    const tempData = [] as optionsProps[];
+    for (const key in values) {
+      console.log(values[key]);
+      if (Array.isArray(values[key])) {
+        console.log(values[key]);
+        values[key].forEach((value: any) => {
+          tempData.push({ name: value.optionName, price: value.price ? value.price : 0 });
+        });
+      } else {
+        const tempName = values[key].split('--')[0]
+        let tempPrice = values[key].split('--')[1]
+        tempData.push({ name: tempName, price: parseInt(tempPrice ? tempPrice : '0') });
+      }
+    }
+    tempItem.options = tempData;
+    console.log(tempItem);
+    props.setCart([...props.cart, tempItem]);
+    handleClose();
+  }
   return (
     <div>
       <Dialog
@@ -239,7 +255,7 @@ const page = (props: popupProps) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleSubmit}>Subscribe</Button>
         </DialogActions>
       </Dialog>
     </div>

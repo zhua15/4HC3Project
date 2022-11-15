@@ -20,7 +20,7 @@
                     [
                         {"optionName": "Mozzorella"},
                         {"optionName": "Cheddar"},
-                        {"optionName": "Provolone"}
+                        {"optionName": "Provolone", "price": 1}
                     ]
                 },
                 {
@@ -29,7 +29,7 @@
                     "summaryViewLabel": "Extras",
                     "options": 
                     [
-                        {"optionName": "Extra Cheese", "Price": 0.99}
+                        {"optionName": "Extra Cheese", "price": 0.99}
                     ]
                 },
                 {
@@ -40,7 +40,7 @@
                         {"optionName": "Pepporoni" },
                         {"optionName": "Green Pepper" },
                         {"optionName": "Mushrooms" },
-                        {"optionName": "Bacon", "Price": 0.99}
+                        {"optionName": "Bacon", "price": 0.99}
                     ]
                 }
             ]

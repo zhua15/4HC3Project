@@ -11,15 +11,14 @@ import Grid from "@material-ui/core/Grid";
 
 type Props = {
     n: number;
-    handleClick: (i:number) => void;
-    addToCart: (i:number) => void;
+    handleClick: (i: number) => void;
+    addToCart: (i: number) => void;
 
 }
 
 export default function ItemCard(props: Props) {
 
     const item = menuItem.menuItems[props.n];
-    console.log(item)
     return (
 
         <Card sx={{ maxWidth: 275 }}>
@@ -38,11 +37,11 @@ export default function ItemCard(props: Props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={()=>props.handleClick(props.n)}>See Details</Button>
-                <Button size="small" onClick={()=>props.addToCart(props.n)}>Order Now</Button>
+                <Button size="small" onClick={() => props.handleClick(props.n)}>See Details</Button>
+                <Button size="small" onClick={() => props.addToCart(props.n)}>Order Now</Button>
 
             </CardActions>
         </Card>
-       
+
     );
 }

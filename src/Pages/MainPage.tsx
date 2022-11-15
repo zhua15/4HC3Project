@@ -66,7 +66,6 @@ const page = () => {
 
     const handleClickOpen = (n: number) => {
         setOpen(true);
-        console.log(menuItem.menuItems[n].customizationOptions)
         const popup: popupProps = {
             open: true,
             setOpen: setOpen,
@@ -79,6 +78,7 @@ const page = () => {
             calories: menuItem.menuItems[n].Calories,
             customizationOptions: menuItem.menuItems[n].customizationOptions,
             setCart: setCart,
+            cart: cart,
             // customizationOptions: customizationOptions
             // open: true,
             // setOpen: setOpen,
@@ -124,7 +124,7 @@ const page = () => {
                 )}
 
             </Grid>
-            <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer}/>
+            <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} />
         </div >
     );
 }
