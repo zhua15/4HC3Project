@@ -106,7 +106,6 @@ const page = () => {
     //Button can be removed but need to add an onClick function to all the menu cards, keep the line to render the popup as well
     return (
         <div>
-            <Button onClick={() => handleClickOpen(1)}>scroll=paper</Button>
             <Button variant='contained' onClick={toggleDrawer()}>Cart</Button>
             {open ? <Popup {...selectedItem} /> : null}
             <h1>Menu</h1>
