@@ -107,7 +107,7 @@ const page = () => {
     return (
         <div>
             <Button onClick={() => handleClickOpen(1)}>scroll=paper</Button>
-            <Button onClick={toggleDrawer()}>Open</Button>
+            <Button variant='contained' onClick={toggleDrawer()}>Cart</Button>
             {open ? <Popup {...selectedItem} /> : null}
             <h1>Menu</h1>
             <p>Menu page body content</p>
