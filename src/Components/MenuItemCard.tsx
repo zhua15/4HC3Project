@@ -13,7 +13,6 @@ type Props = {
     n: number;
     handleClick: (i: number) => void;
     addToCart: (i: number) => void;
-
 }
 
 export default function ItemCard(props: Props) {
@@ -21,7 +20,7 @@ export default function ItemCard(props: Props) {
     const item = menuItem.menuItems[props.n];
     return (
 
-        <Card sx={{ maxWidth: 275 }}>
+        <Card sx={{ maxWidth:350 }} style={{ cursor: "pointer"}} onClick={() => props.handleClick(props.n)}>
             <CardMedia
                 component="img"
                 height="200"
@@ -29,7 +28,7 @@ export default function ItemCard(props: Props) {
                 alt="dish image"
             />
             <CardContent>
-                <Typography variant="h5">
+                <Typography variant="h6">
                     {item.Name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -37,9 +36,11 @@ export default function ItemCard(props: Props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={() => props.handleClick(props.n)}>See Details</Button>
-                <Button size="small" onClick={() => props.addToCart(props.n)}>Order Now</Button>
-
+                <Button size="small" onMouseDown={event => event.stopPropagation()}
+                onClick={event => {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    props.addToCart(props.n)}}>Order Now</Button>
             </CardActions>
         </Card>
 

@@ -63,9 +63,9 @@ const page = () => {
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
+
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
-
     const handleClickOpen = (n: number) => {
         setOpen(true);
         const popup: popupProps = {
@@ -100,9 +100,11 @@ const page = () => {
         setSelectedItem(popup);
     };
 
-    const addToCart = () => {
-        // transfer the data
-    };
+    const addToCart = (n: number) => {
+        const tempItem = { name: menuItem.menuItems[n].Name, quantity: 1, price: menuItem.menuItems[n].Price } as itemProps;
+        setCart([...cart, tempItem]);
+      }
+
     const itemNum = menuItem.menuItems.length;
 
     //Button can be removed but need to add an onClick function to all the menu cards, keep the line to render the popup as well
@@ -122,17 +124,13 @@ const page = () => {
             <h1>Menu</h1>
             <p>Menu page body content</p>
 
-            {/* this part doesnt work idk why, it should display multiple items on same row */}
-            {/* i try grid and row/col they all dont work */}
             <Grid container spacing={2} direction='row'>
-                {/* <Grid item md={3}> */}
                 {[...Array(itemNum)].map((elementInArray, index) => (
                     <Grid item xs={3}>
                         <ItemCard n={index} handleClick={handleClickOpen} addToCart={addToCart} />
                     </Grid>
                 )
                 )}
-
             </Grid>
             <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} />
         </div >
