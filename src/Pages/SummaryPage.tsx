@@ -12,6 +12,13 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Typography from '@mui/material/Typography';
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 // faking props data 
 export interface orderHistoryProps {
    jsonobjects: order[];
@@ -56,63 +63,114 @@ const page = () => {
    const priceSum = fakeProps.reduce((sum, order) => sum + (order.price * order.quantity), 0)
    const tax = (priceSum * 0.13)
    const totalPrice = priceSum + tax + (priceSum * tip)
+    
+    // const DenseTable = () => {
+    //   return (
+    //     <TableContainer component={Paper}>
+    //       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
+    //         <TableHead>
+    //           <TableRow
+    //           sx={{
+    //            fontWeight: 400
+    //           }}>
+    //             <TableCell><b>Name</b></TableCell>
+    //             <TableCell align="right"><b>Price</b></TableCell>
+    //             <TableCell align="right"><b>Quantity</b></TableCell>
+    //             <TableCell align="right"><b>Options</b></TableCell>
+    //             <TableCell align="right"><b>Total</b></TableCell>
+    //           </TableRow>
+    //         </TableHead>
+    //         <TableBody>
+    //           {fakeProps.map((row) => (
+    //             <TableRow
+    //               key={row.name}
+    //               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+    //             >
+    //               <TableCell component="th" scope="row">
+    //                 {row.name}
+    //               </TableCell>
+    //               <TableCell align="right">${row.price}</TableCell>
+    //               <TableCell align="right">{row.quantity}</TableCell>
+    //               <TableCell align="right">TODO</TableCell>
+    //               <TableCell align="right">${row.price * row.quantity}</TableCell>
 
-   const createData = (
-      name: string,
-      calories: number,
-      fat: number,
-      carbs: number,
-      protein: number,
-    ) => {
-      return { name, calories, fat, carbs, protein };
-    }
-    
-    const rows = [
-      createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-      createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-      createData('Eclair', 262, 16.0, 24, 6.0),
-      createData('Cupcake', 305, 3.7, 67, 4.3),
-      createData('Gingerbread', 356, 16.0, 49, 3.9),
-    ];
-    
-    const DenseTable = () => {
+    //             </TableRow>
+    //           ))}
+    //         </TableBody>
+    //       </Table>
+    //     </TableContainer>
+    //   );
+    // }
+  
+
+    const Row = (props: {row: order}) => {
+      const { row } = props;
+      const [open, setOpen] = React.useState(false);
+      
       return (
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="a dense table">
-            <TableHead>
-              <TableRow
-              sx={{
-               fontWeight: 400
-              }}>
-                <TableCell><b>Name</b></TableCell>
-                <TableCell align="right"><b>Price</b></TableCell>
-                <TableCell align="right"><b>Quantity</b></TableCell>
-                <TableCell align="right"><b>Options</b></TableCell>
-                <TableCell align="right"><b>Total</b></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {fakeProps.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">${row.price}</TableCell>
-                  <TableCell align="right">{row.quantity}</TableCell>
-                  <TableCell align="right">TODO</TableCell>
-                  <TableCell align="right">${row.price * row.quantity}</TableCell>
-
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <React.Fragment>
+          <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+            <TableCell>
+              <IconButton
+                aria-label="expand row"
+                size="small"
+                onClick={() => setOpen(!open)}
+              >
+                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            </TableCell>
+            <TableCell component="th" scope="row">
+              {row.name}
+            </TableCell>
+            <TableCell align="right">{row.price}</TableCell>
+            <TableCell align="right">{row.quantity}</TableCell>
+            <TableCell align="right">Option Price</TableCell>
+            <TableCell align="right">{row.price * row.quantity}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <Box sx={{ margin: 1 }}>
+                  <Typography variant="h6" gutterBottom component="div">
+                    Options
+                  </Typography>
+                  <Table size="small" aria-label="purchases">
+                    <TableHead>
+                      <TableRow>
+                        {/* <TableCell>Description</TableCell>
+                        <TableCell>Price</TableCell> */}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {/* {row.options &&
+                      row.options.map((option:any) => (
+                        <TableRow key={1}>
+                          <TableCell component="th" scope="row">
+                            D
+                          </TableCell>
+                          <TableCell>C</TableCell>
+                          <TableCell align="right">B</TableCell>
+                          <TableCell align="right">
+                            A
+                          </TableCell>
+                        </TableRow>
+                      ))} */}
+                      <TableRow key={1}>
+                          TODO
+                          {/* <TableCell component="th" scope="row">
+                            TODO
+                          </TableCell>
+                          <TableCell>Option Price</TableCell> */}
+                        </TableRow>
+                    </TableBody>
+                  </Table>
+                </Box>
+              </Collapse>
+            </TableCell>
+          </TableRow>
+        </React.Fragment>
       );
     }
-    
     
     
     const Subtotal = () => {
@@ -151,12 +209,37 @@ const page = () => {
        );
      }
 
+     const CollapsibleTable = () => {
+      return (
+        <TableContainer component={Paper}>
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>Name</TableCell>
+                <TableCell align="right">Price</TableCell>
+                <TableCell align="right">Quantity</TableCell>
+                <TableCell align="right">Options</TableCell>
+                <TableCell align="right">Total</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {fakeProps.map((row) => (
+                <Row key={row.name} row={row} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      );
+    }
+
 
     return (
          <Box mx={10} my={3}>
             <h1>Payment</h1>
             <h2>Order History</h2>
-            <DenseTable/>
+            {/* <DenseTable/> */}
+            <CollapsibleTable/>
             
             <h2>Summary</h2>
             <Subtotal/>
