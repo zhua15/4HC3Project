@@ -17,7 +17,8 @@ import Collapse from '@mui/material/Collapse';
 import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { custimizationOptionProps, custimizationOptionsList, customizationType } from './PopupPage';
 import { Tab } from 'react-bootstrap';
@@ -88,7 +89,7 @@ const fakeProps : order[] = [
 
 // summary page component
 const page = () => {
-   const [tip, setTip] = useState(0)
+   const [tip, setTip] = useState(0.1)
   //  const priceSum = fakeProps.reduce((sum, order) => sum + (order.price * order.quantity), 0)
   const getTotalPrice = () => {
     var sum = 0
@@ -220,6 +221,13 @@ const page = () => {
     }
 
     const Subtotal = () => {
+      // const [alignment, setAlignment] = useState(0.1);
+
+      // const selectTip = (tip:number) => {
+      //   setAlignment(tip)
+      //   setTip(tip)
+      // }
+
       return (
         <>
         <TableContainer component={Paper}>
@@ -238,9 +246,27 @@ const page = () => {
               <TableRow>
                 <TableCell>Tip</TableCell>
                 <TableCell align="right">
-                 <ButtonGroup variant="outlined">
+                 {/* <ToggleButtonGroup
+                  value={alignment}
+                  exclusive
+                  // onChange={handleAlignment}
+                 >
+                  <ToggleButton 
+                    value={0} 
+                    onClick={() => selectTip(0)}
+                  >0%</ToggleButton>
+                  <ToggleButton 
+                    value={0.1} 
+                    onClick={() => selectTip(0.1)}
+                  >10%</ToggleButton>
+                  <ToggleButton 
+                    value={0.2}
+                    onClick={() => selectTip(0.2)}
+                  >20%</ToggleButton>                  
+                 </ToggleButtonGroup> */}
+                  <ButtonGroup variant="outlined">
                        <Button onClick={() => setTip(0)}>0%</Button>
-                       <Button onClick={() => setTip(0.1)}>10%</Button>
+                       <Button onClick={() => setTip(0.13)}>13%</Button>
                        <Button onClick={() => setTip(0.20)}>20%</Button>
                     </ButtonGroup>
                 </TableCell>
