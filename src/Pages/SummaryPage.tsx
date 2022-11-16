@@ -18,8 +18,11 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+
 import { custimizationOptionProps, custimizationOptionsList, customizationType } from './PopupPage';
 import { Tab } from 'react-bootstrap';
+
+const primaryColor = '#1976d2'
 
 
 // faking props data 
@@ -66,7 +69,7 @@ const fakeProps : order[] = [
                     price: 1.99
                 },
                 {
-                    optionName: "Pepporoni"
+                    optionName: "Pepporoni",
                 },
                 {
                     optionName: "Yellow Peppers"
@@ -86,15 +89,44 @@ const fakeProps : order[] = [
 // summary page component
 const page = () => {
    const [tip, setTip] = useState(0)
-   const priceSum = fakeProps.reduce((sum, order) => sum + (order.price * order.quantity), 0)
+  //  const priceSum = fakeProps.reduce((sum, order) => sum + (order.price * order.quantity), 0)
+  const getTotalPrice = () => {
+    var sum = 0
+    fakeProps.map((order) => {
+      var itemPrice = 0
+      itemPrice += order.price 
+      if (order.options) {
+        order.options.map((op) => {
+          op.options.map((opp) => {
+            if (opp.price) itemPrice += opp.price
+          })
+        })
+      }
+      itemPrice *= order.quantity
+      sum += itemPrice
+    })
+    return sum
+  }
+
+   const priceSum = getTotalPrice()
    const tax = (priceSum * 0.13)
    const totalPrice = priceSum + tax + (priceSum * tip)
+
 
 
     const Row = (props: {row: order}) => {
       const { row } = props;
       const [open, setOpen] = React.useState(false);
       
+      const getOptionPrice = (ops: custimizationOptionProps[]) => {
+        var optionPrice = 0
+        ops.map((op) => {
+          op.options.map((opp) => {
+            if (opp.price) optionPrice += opp.price
+          })
+        })
+        return optionPrice
+      }
         
       const RenderOptions = (props: {op: custimizationOptionProps}) => {
         const {op} = props;
@@ -103,7 +135,7 @@ const page = () => {
             {op.options.map((opp:custimizationOptionsList) => (
               <TableRow>
                 <TableCell align="left">{opp.optionName}</TableCell>
-                <TableCell align="right">{opp.price ? '$' + opp.price : ''}</TableCell>
+                <TableCell align="right">{opp.price ? '+ $' + opp.price : ''}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -131,19 +163,24 @@ const page = () => {
             <TableCell component="th" scope="row">
               {row.name}
             </TableCell>
-            <TableCell align="right">{row.price}</TableCell>
+            <TableCell align="right">${row.price}</TableCell>
+            <TableCell align="right">${row.options !== undefined ? getOptionPrice(row.options) : 0}</TableCell>
             <TableCell align="right">{row.quantity}</TableCell>
-            <TableCell align="right">Option Price</TableCell>
-            <TableCell align="right">{row.price * row.quantity}</TableCell>
+            <TableCell align="right">${
+            row.options !== undefined 
+              ? 
+                ((row.price + getOptionPrice(row.options) )* row.quantity).toFixed(2)
+              :
+                (row.price * row.quantity)
+            }
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
               <Collapse in={open} timeout="auto" unmountOnExit>
-                <Box ml="60%">
+                <Box ml="61%" mr={3}>
                   <Table size="small" aria-label="purchases" >
                   <TableRow>
-                    <TableCell align="left">Chosen Options</TableCell>
-                    <TableCell align="right">Additional Charge</TableCell>
                   </TableRow>
                     {(row.options === undefined) ? <></> :
                      row.options.map((optionRow) => (
@@ -164,12 +201,12 @@ const page = () => {
           <Table aria-label="collapsible table">
             <TableHead>
               <TableRow>
-                <TableCell />
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Price</TableCell>
-                <TableCell align="right">Quantity</TableCell>
-                <TableCell align="right">Options</TableCell>
-                <TableCell align="right">Total</TableCell>
+                <TableCell><b>Details</b></TableCell>
+                <TableCell><b>Name</b></TableCell>
+                <TableCell align="right"><b>Price</b></TableCell>
+                <TableCell align="right"><b>Options</b></TableCell>
+                <TableCell align="right"><b>Quantity</b></TableCell>
+                <TableCell align="right"><b>Total</b></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -184,44 +221,49 @@ const page = () => {
 
     const Subtotal = () => {
       return (
+        <>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="spanning table">
              <TableBody>
               <TableRow>
-                <TableCell rowSpan={3} />
-                <TableCell colSpan={2}>Subtotal</TableCell>
+                <TableCell>Subtotal</TableCell>
+                <TableCell align="right"></TableCell>
                 <TableCell align="right">${priceSum}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Tax</TableCell>
                 <TableCell align="right">{"13%"}</TableCell>
-                <TableCell align="right">${tax}</TableCell>
+                <TableCell align="right">${tax.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Tip</TableCell>
                 <TableCell align="right">
                  <ButtonGroup variant="outlined">
                        <Button onClick={() => setTip(0)}>0%</Button>
-                       <Button onClick={() => setTip(0.13)}>13%</Button>
+                       <Button onClick={() => setTip(0.1)}>10%</Button>
                        <Button onClick={() => setTip(0.20)}>20%</Button>
                     </ButtonGroup>
                 </TableCell>
-                <TableCell align="right">${tip * priceSum}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell colSpan={2}>Total</TableCell>
-                <TableCell align="right">${totalPrice.toFixed(2)}</TableCell>
+                <TableCell align="right">${(tip * priceSum).toFixed(2)}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
+        <Box textAlign='right' mr={3}>
+          <h2>Total: ${totalPrice.toFixed(2)}</h2>
+        </Box>
+        </>
       );
     }
 
 
 
     return (
-         <Box mx={10} my={3}>
+         <Box 
+          mx={10} 
+          my={3} 
+          // sx={{color: primaryColor}}
+         >
             <h1>Payment</h1>
             <h2>Order History</h2>
             <CollapsibleTable/>
@@ -229,9 +271,16 @@ const page = () => {
             <h2>Summary</h2>
             <Subtotal/>
          
-            <Box my={5} textAlign='right'>
-               <Button variant="outlined">Call Service</Button>
-               <Button variant="outlined">Proceed to Payment</Button>
+            <Box
+              my={5} 
+              mx={3}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between"
+              }}
+            >
+               <Button variant="contained">Call Service</Button>
+               <Button variant="contained">Proceed to Payment</Button>
             </Box>
          </Box>
     );
