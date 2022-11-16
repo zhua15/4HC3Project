@@ -72,7 +72,25 @@ const cart = (props: cartProps) => {
                 ModalProps={{
                 keepMounted: true,
                 }}
-            >
+            >   
+                <StyledBox
+                sx={{
+                    px: 2,
+                    pb: 2,
+                    height: '100%',
+                }}
+                >
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <Typography
+                        align='center'
+                        variant='h2'
+                        >
+                        Shopping Cart
+                    </Typography>
+                </StyledBox>
                 <StyledBox
                 sx={{
                     px: 2,
@@ -81,16 +99,7 @@ const cart = (props: cartProps) => {
                     overflow: 'auto',
                 }}
                 >
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <Typography
-                    align='center'
-                    variant='h2'
-                    >
-                    Shopping Cart
-                </Typography>
+                
                 {props.cart.map((item : itemProps) => {
                     return(
                         <div>
