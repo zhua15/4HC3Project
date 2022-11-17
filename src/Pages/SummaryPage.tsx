@@ -73,7 +73,7 @@ const summary = (props: {orderHistoryProps: itemProps[]}) => {
         <React.Fragment>
           <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
             <TableCell>
-              { item.options !== undefined ?
+              { item.options && item.options.length > 0 ?
                 <IconButton
                 aria-label="expand row"
                 size="small"
