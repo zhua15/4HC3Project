@@ -51,7 +51,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[300],
+    backgroundColor: theme.palette.mode === 'dark' ? '#fff' : 'linen',
 }));
 
 const Puller = styled(Box)(({ theme }) => ({
@@ -197,7 +197,7 @@ const cart = (props: cartProps) => {
             <Global
                 styles={{
                     '.MuiDrawer-root > .MuiPaper-root': {
-                        height: `calc(50% - ${props.bleeding}px)`,
+                        height: `calc(90% - ${props.bleeding}px)`,
                         overflow: 'visible',
                     },
                 }}
@@ -217,7 +217,7 @@ const cart = (props: cartProps) => {
                     sx={{
                         px: 2,
                         pb: 2,
-                        height: '40%',
+                        height: '30%',
                     }}
                 >
                     &nbsp;
