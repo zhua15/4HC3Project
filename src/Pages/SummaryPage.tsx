@@ -22,50 +22,51 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { itemProps, optionsProps } from "../Components/Cart";
 
 
-const fakeProps : itemProps[] = [
-   {
-      name: "Fries",
-      price: 4.99, 
-      quantity: 1,
-   },
-   {
-      name: "pizza",
-      price: 14, 
-      quantity: 2,
-      options: [
-        {name: "Cheddar", price:0},
-        {name: "Extra Cheese", price:0.99},
-        {name: "Green Pepper", price:0},
-        {name: "Bacon", price:0.99}
-        ],
-    },
-   {
-      name: "pasta",
-      price: 10, 
-      quantity: 5,
-   },
-   {
-    name: "20 pcs Chicken Nuggets",
-    price: 17.99, 
-    quantity: 1,
-    options: [
-      {name: "Spicy Habanero", price:0},
-      {name: "BBQ Sauce", price:0},
-      ],
-  },
-]
+// const fakeProps : itemProps[] = [
+//    {
+//       name: "Fries",
+//       price: 4.99, 
+//       quantity: 1,
+//    },
+//    {
+//       name: "pizza",
+//       price: 14, 
+//       quantity: 2,
+//       options: [
+//         {name: "Cheddar", price:0},
+//         {name: "Extra Cheese", price:0.99},
+//         {name: "Green Pepper", price:0},
+//         {name: "Bacon", price:0.99}
+//         ],
+//     },
+//    {
+//       name: "pasta",
+//       price: 10, 
+//       quantity: 5,
+//    },
+//    {
+//     name: "20 pcs Chicken Nuggets",
+//     price: 17.99, 
+//     quantity: 1,
+//     options: [
+//       {name: "Spicy Habanero", price:0},
+//       {name: "BBQ Sauce", price:0},
+//       ],
+//   },
+// ]
 
 
 // summary page component
 // expect to receive props:itemProps[]
 // right now using fakeProps as fake data 
-const summary = () => {
+const summary = (props: {orderHistoryProps: itemProps[]}) => {
+  console.log(props)
    const [tip, setTip] = useState(0)
 
   // calculates subtotal 
   const getSubtotalPrice = () => {
     var sum = 0
-    fakeProps.map((order) => {
+    props.orderHistoryProps.map((order) => {
       var itemPrice = 0
       itemPrice += order.price 
       if (order.options) {
@@ -175,7 +176,7 @@ const summary = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fakeProps.map((item) => ( <Row key={item.name} item={item} /> ))}
+              {props.orderHistoryProps.map((item) => ( <Row key={item.name} item={item} /> ))}
             </TableBody>
           </Table>
         </TableContainer>

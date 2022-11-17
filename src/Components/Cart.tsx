@@ -17,6 +17,7 @@ export interface cartProps {
     bleeding: number,
     open: boolean,
     toggleDrawer: any,
+    setHistory:any
 }
 
 export interface itemProps {
@@ -52,8 +53,10 @@ left: 'calc(50% - 15px)',
 }));
 
 const cart = (props: cartProps) => {
+    
     let navigate = useNavigate(); 
     const routeChange = () => { 
+        props.setHistory()
         let path = `/summary`; 
         navigate(path);
     }
@@ -173,7 +176,7 @@ const cart = (props: cartProps) => {
                     ))), 0)).toFixed(2)}
                 </Typography>
                 <Box textAlign='center'>
-                    <Button variant='contained'>
+                    <Button variant='contained' onClick={props.setHistory}>
                         Order
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;

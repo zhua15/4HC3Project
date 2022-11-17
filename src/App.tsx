@@ -68,14 +68,32 @@ const customizationOptions: custimizationOptionProps[] = [
 // }
 
 class App extends Component {
+
+
+  // _renderCounter = () => () => {
+  //   const [orderHistory, setOrderHistory] = React.useState([] as itemProps[]);
+  //   const  props = {
+  //     orderHistoryProps: orderHistory,
+  //     setOrderHistoryProps: setOrderHistory
+  //   }
+  //   return props
+  // }
+
   render() {
+
+    // const props = this._renderCounter();
+    var orderHistory:itemProps[]  = []
+    var props = {
+      orderHistoryProps: orderHistory
+    }
+
     return (
       <HashRouter>
         <div>
           <Routes>
-            <Route path="/" element={<Menu />} />
+            <Route path="/" element={<Menu {...props}/>} />
             {/* <Route path="/popup" element={<Popup {...popup} />} /> */}
-            <Route path="/summary" element={<Summary />} />
+            <Route path="/summary" element={<Summary {...props}/>} />
             {/* <Route path="/cart" element={<Cart {...cart} />} /> */}
           </Routes>
         </div>

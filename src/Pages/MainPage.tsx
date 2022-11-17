@@ -85,12 +85,13 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-const page = () => {
+const page = (props: {orderHistoryProps: itemProps[]}) => {
+    // const { orderHistory, setOrderHistory } = props;
+
     const [open, setOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
     const [openCart, setOpenCart] = React.useState(false);
     const [cart, setCart] = React.useState([] as itemProps[]);
-    const [orderHistory, setOrderHistory] = React.useState([] as itemProps[]);
     const [mains, setMains] = React.useState([] as JSX.Element[]);
     const [appetizers, setAppetizers] = React.useState([] as JSX.Element[]);
     const [desserts, setDesserts] = React.useState([] as JSX.Element[]);
@@ -141,9 +142,14 @@ const page = () => {
         setCart([...cart, tempItem]);
     }
 
-    const addToOrderHistory = (cart: itemProps[]) => {
-        setOrderHistory([...orderHistory, ...cart])
-    }
+    const setOrderHistory = () => {
+        console.log("cart",cart)
+        cart.map((item) => {
+            props.orderHistoryProps.push(item)
+        })
+        // props.orderHistoryProps.extend(...cart)
+      }
+
 
     const itemNum = menuItem.menuItems.length;
 
@@ -232,7 +238,7 @@ const page = () => {
                     </Grid>
                 </TabPanel>
                 {open ? <Popup {...selectedItem} /> : null}
-                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} />
+                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory}/>
             </div >
         </div>
     );
