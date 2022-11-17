@@ -12,11 +12,11 @@ import { useNavigate } from "react-router-dom";
 
 export interface cartProps {
     cart: itemProps[],
+    setCart: any,
     bleeding: number,
     open: boolean,
     toggleDrawer: any,
     setHistory: any,
-    handleDelete: any
 }
 
 export interface itemProps {
@@ -58,6 +58,21 @@ const cart = (props: cartProps) => {
         props.setHistory()
         let path = `/summary`;
         navigate(path);
+    }
+    
+    const order = () => {
+        props.setHistory()
+        props.setCart([])
+    }
+
+    const handleDelete = (item: itemProps) => {
+        var index = props.cart.indexOf(item);
+        if (index !== -1) {
+            var temp = props.cart
+            temp.splice(index, 1)
+            console.log(temp)
+            props.setCart([...temp])
+        }
     }
 
     return (
@@ -119,7 +134,7 @@ const cart = (props: cartProps) => {
                                         flexWrap: 'wrap',
                                         columnGap: '50px',
                                     }}>
-                                        <Button onClick={props.handleDelete}>
+                                        <Button onClick={(a) => handleDelete(item)}>
                                             <DeleteIcon />
                                         </Button>
 
@@ -174,7 +189,7 @@ const cart = (props: cartProps) => {
                             ))), 0)).toFixed(2)}
                     </Typography>
                     <Box textAlign='center'>
-                        <Button variant='contained' onClick={props.setHistory}>
+                        <Button variant='contained' onClick={order}>
                             Order
                         </Button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
