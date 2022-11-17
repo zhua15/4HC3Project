@@ -166,7 +166,7 @@ const summary = (props: {orderHistoryProps: itemProps[]}) => {
               <TableRow>
                 <TableCell>Subtotal</TableCell>
                 <TableCell align="right"></TableCell>
-                <TableCell align="right">${subtotal}</TableCell>
+                <TableCell align="right">${subtotal.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Tax</TableCell>
