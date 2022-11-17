@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Grid } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 export interface cartProps {
     cart: itemProps[],
@@ -51,6 +52,16 @@ left: 'calc(50% - 15px)',
 }));
 
 const cart = (props: cartProps) => {
+    let navigate = useNavigate(); 
+    const routeChange = () => { 
+        let path = `/summary`; 
+        navigate(path);
+    }
+
+    const updateOrderHistory = () => {
+        
+    }
+
     return (
         <Root>
             <CssBaseline />
@@ -72,7 +83,25 @@ const cart = (props: cartProps) => {
                 ModalProps={{
                 keepMounted: true,
                 }}
-            >
+            >   
+                <StyledBox
+                sx={{
+                    px: 2,
+                    pb: 2,
+                    height: '100%',
+                }}
+                >
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <Typography
+                        align='center'
+                        variant='h2'
+                        >
+                        Shopping Cart
+                    </Typography>
+                </StyledBox>
                 <StyledBox
                 sx={{
                     px: 2,
@@ -81,16 +110,7 @@ const cart = (props: cartProps) => {
                     overflow: 'auto',
                 }}
                 >
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <Typography
-                    align='center'
-                    variant='h2'
-                    >
-                    Shopping Cart
-                </Typography>
+                
                 {props.cart.map((item : itemProps) => {
                     return(
                         <div>
@@ -157,8 +177,8 @@ const cart = (props: cartProps) => {
                         Order
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button variant='contained'>
-                        Pay Bill
+                    <Button variant='contained' onClick={routeChange}>
+                        Order and Pay
                     </Button>
                 </Box>
                 </StyledBox>

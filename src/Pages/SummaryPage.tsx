@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React, { useEffect } from 'react';
 import { useState } from 'react'; 
 import Table from '@mui/material/Table';
@@ -14,35 +13,19 @@ import Box from '@mui/material/Box';
 
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
-import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-
-import { custimizationOptionProps, custimizationOptionsList, customizationType } from './PopupPage';
-import { Tab } from 'react-bootstrap';
-
-const primaryColor = '#1976d2'
 
 
-// faking props data 
-export interface orderHistoryProps {
-   jsonobjects: order[];
-}
+// import { custimizationOptionProps, custimizationOptionsList, customizationType } from './PopupPage';
 
-export interface order {
-   name: string;
-   price: number;
-   quantity: number;
-   options?: custimizationOptionProps[];
-}
+import { itemProps, optionsProps } from "../Components/Cart";
 
 
-const fakeProps : order[] = [
+const fakeProps : itemProps[] = [
    {
-      name: "burger",
-      price: 8, 
+      name: "Fries",
+      price: 4.99, 
       quantity: 1,
    },
    {
@@ -50,106 +33,75 @@ const fakeProps : order[] = [
       price: 14, 
       quantity: 2,
       options: [
-        {
-            componentType: 'Single',
-            label: "Select Cheese",
-            summaryViewLabel: "Cheese",
-            options: [
-                {
-                    optionName: "Mozerella"
-                } 
-            ] 
-        },
-        {
-            componentType: 'Multi',
-            label: "Select Toppings",
-            summaryViewLabel: "Toppings",
-            options: [
-                {
-                    optionName: "Bacon",
-                    price: 1.99
-                },
-                {
-                    optionName: "Pepporoni",
-                },
-                {
-                    optionName: "Yellow Peppers"
-                }
-            ]
-        }
-    ]
-   },
+        {name: "Cheddar", price:0},
+        {name: "Extra Cheese", price:0.99},
+        {name: "Green Pepper", price:0},
+        {name: "Bacon", price:0.99}
+        ],
+    },
    {
       name: "pasta",
       price: 10, 
       quantity: 5,
    },
+   {
+    name: "20 pcs Chicken Nuggets",
+    price: 17.99, 
+    quantity: 1,
+    options: [
+      {name: "Spicy Habanero", price:0},
+      {name: "BBQ Sauce", price:0},
+      ],
+  },
 ]
 
 
 // summary page component
-const page = () => {
-   const [tip, setTip] = useState(0.1)
-  //  const priceSum = fakeProps.reduce((sum, order) => sum + (order.price * order.quantity), 0)
-  const getTotalPrice = () => {
+// expect to receive props:itemProps[]
+// right now using fakeProps as fake data 
+const summary = () => {
+   const [tip, setTip] = useState(0)
+
+  // calculates subtotal 
+  const getSubtotalPrice = () => {
     var sum = 0
     fakeProps.map((order) => {
       var itemPrice = 0
       itemPrice += order.price 
       if (order.options) {
-        order.options.map((op) => {
-          op.options.map((opp) => {
-            if (opp.price) itemPrice += opp.price
-          })
-        })
+        order.options.map((option) => { itemPrice += option.price })
       }
       itemPrice *= order.quantity
       sum += itemPrice
     })
     return sum
   }
+   const subtotal = getSubtotalPrice()
 
-   const priceSum = getTotalPrice()
-   const tax = (priceSum * 0.13)
-   const totalPrice = priceSum + tax + (priceSum * tip)
+   const tax = (subtotal * 0.13)
+   const totalPrice = subtotal + tax + (subtotal * tip)
 
 
-
-    const Row = (props: {row: order}) => {
-      const { row } = props;
+    // creates each row (collapsible) of the CollapsibleTable component
+    const Row = (props: {item: itemProps}) => {
+      const { item } = props;
       const [open, setOpen] = React.useState(false);
       
-      const getOptionPrice = (ops: custimizationOptionProps[]) => {
+      const getOptionsubtotal = (item: itemProps) => {
         var optionPrice = 0
-        ops.map((op) => {
-          op.options.map((opp) => {
-            if (opp.price) optionPrice += opp.price
+        if (item.options) {
+          item.options.map((option) => {
+            optionPrice += option.price
           })
-        })
+        }
         return optionPrice
-      }
-        
-      const RenderOptions = (props: {op: custimizationOptionProps}) => {
-        const {op} = props;
-        return (
-          <TableBody>
-            {op.options.map((opp:custimizationOptionsList) => (
-              <TableRow>
-                <TableCell align="left">{opp.optionName}</TableCell>
-                <TableCell align="right">{opp.price ? '+ $' + opp.price : ''}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-
-        )
-      }
+      }   
 
       return (
-        
         <React.Fragment>
           <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
             <TableCell>
-              { row.options !== undefined ?
+              { item.options !== undefined ?
                 <IconButton
                 aria-label="expand row"
                 size="small"
@@ -161,18 +113,18 @@ const page = () => {
               }
              
             </TableCell>
-            <TableCell component="th" scope="row">
-              {row.name}
+            <TableCell component="th" scope="row">{item.name}</TableCell>
+            <TableCell align="right">${item.price}</TableCell>
+            <TableCell align="right">
+              {(item.options && getOptionsubtotal(item) > 0)
+                ? "$" + getOptionsubtotal(item) 
+                : ""}
             </TableCell>
-            <TableCell align="right">${row.price}</TableCell>
-            <TableCell align="right">${row.options !== undefined ? getOptionPrice(row.options) : 0}</TableCell>
-            <TableCell align="right">{row.quantity}</TableCell>
+            <TableCell align="right">{item.quantity}</TableCell>
             <TableCell align="right">${
-            row.options !== undefined 
-              ? 
-                ((row.price + getOptionPrice(row.options) )* row.quantity).toFixed(2)
-              :
-                (row.price * row.quantity)
+            item.options !== undefined 
+              ? ((item.price + getOptionsubtotal(item) )* item.quantity).toFixed(2)
+              : (item.price * item.quantity)
             }
             </TableCell>
           </TableRow>
@@ -183,10 +135,21 @@ const page = () => {
                   <Table size="small" aria-label="purchases" >
                   <TableRow>
                   </TableRow>
-                    {(row.options === undefined) ? <></> :
-                     row.options.map((optionRow) => (
-                      <RenderOptions op={optionRow}/>
-                    ))}
+                    {(item.options === undefined) 
+                      ? <></> 
+                      : // render each option name and price in condensed table
+                      <TableBody>
+                        {item.options &&
+                        item.options.map((option:optionsProps) => (
+                          <TableRow>
+                            <TableCell align="left">{option.name}</TableCell>
+                            <TableCell align="right">
+                              {option.price == 0 ? '' : '+ $' + option.price}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    }
                   </Table>
                 </Box>
               </Collapse>
@@ -196,6 +159,7 @@ const page = () => {
       );
     }
     
+    // parent table
      const CollapsibleTable = () => {
       return (
         <TableContainer component={Paper}>
@@ -211,23 +175,15 @@ const page = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fakeProps.map((row) => (
-                <Row key={row.name} row={row} />
-              ))}
+              {fakeProps.map((item) => ( <Row key={item.name} item={item} /> ))}
             </TableBody>
           </Table>
         </TableContainer>
       );
     }
 
+    // table that displays subtotal, tax and tip 
     const Subtotal = () => {
-      // const [alignment, setAlignment] = useState(0.1);
-
-      // const selectTip = (tip:number) => {
-      //   setAlignment(tip)
-      //   setTip(tip)
-      // }
-
       return (
         <>
         <TableContainer component={Paper}>
@@ -236,7 +192,7 @@ const page = () => {
               <TableRow>
                 <TableCell>Subtotal</TableCell>
                 <TableCell align="right"></TableCell>
-                <TableCell align="right">${priceSum}</TableCell>
+                <TableCell align="right">${subtotal}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Tax</TableCell>
@@ -246,31 +202,29 @@ const page = () => {
               <TableRow>
                 <TableCell>Tip</TableCell>
                 <TableCell align="right">
-                 {/* <ToggleButtonGroup
-                  value={alignment}
-                  exclusive
-                  // onChange={handleAlignment}
-                 >
-                  <ToggleButton 
-                    value={0} 
-                    onClick={() => selectTip(0)}
-                  >0%</ToggleButton>
-                  <ToggleButton 
-                    value={0.1} 
-                    onClick={() => selectTip(0.1)}
-                  >10%</ToggleButton>
-                  <ToggleButton 
-                    value={0.2}
-                    onClick={() => selectTip(0.2)}
-                  >20%</ToggleButton>                  
-                 </ToggleButtonGroup> */}
                   <ButtonGroup variant="outlined">
-                       <Button onClick={() => setTip(0)}>0%</Button>
-                       <Button onClick={() => setTip(0.13)}>13%</Button>
-                       <Button onClick={() => setTip(0.20)}>20%</Button>
+                       <Button 
+                        onClick={() => setTip(0)}
+                        color={tip === 0 ? "secondary" : "primary"}
+                       > 
+                        0%
+                       </Button>
+                       <Button 
+                        onClick={() => setTip(0.1)}
+                        color={tip === 0.1 ? "secondary" : "primary"}
+                       >
+                        10%
+                       </Button>
+
+                       <Button 
+                        onClick={() => setTip(0.2)}
+                        color={tip === 0.2 ? "secondary" : "primary"}
+                       >
+                        20%
+                       </Button>
                     </ButtonGroup>
                 </TableCell>
-                <TableCell align="right">${(tip * priceSum).toFixed(2)}</TableCell>
+                <TableCell align="right">${(tip * subtotal).toFixed(2)}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -283,12 +237,11 @@ const page = () => {
     }
 
 
-
+    // main 
     return (
          <Box 
           mx={10} 
           my={3} 
-          // sx={{color: primaryColor}}
          >
             <h1>Payment</h1>
             <h2>Order History</h2>
@@ -312,7 +265,7 @@ const page = () => {
     );
 }
  
-export default page;
+export default summary;
 
 
 
