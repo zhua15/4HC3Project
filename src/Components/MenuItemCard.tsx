@@ -10,39 +10,37 @@ import * as menuItem from './../data/menuData.json';
 import Grid from "@material-ui/core/Grid";
 
 type Props = {
-    n: number;
+    item: any;
     handleClick: (i: number) => void;
     addToCart: (i: number) => void;
 }
 
 export default function ItemCard(props: Props) {
-
-    const item = menuItem.menuItems[props.n];
+    const [shadow, setShadow] = React.useState(1);
     return (
-
-        <Card sx={{ maxWidth:350 }} style={{ cursor: "pointer"}} onClick={() => props.handleClick(props.n)}>
+        <Card sx={{ maxWidth: 350, boxShadow: shadow, cursor: "pointer", backgroundColor: "linen" }} onClick={() => props.handleClick(props.item)} onMouseOver={() => setShadow(3)} onMouseOut={() => setShadow(1)}>
             <CardMedia
                 component="img"
                 height="200"
-                image={item.Image}
+                image={props.item.Image}
                 alt="dish image"
             />
             <CardContent>
                 <Typography variant="h6">
-                    {item.Name}
+                    {props.item.Name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    $ {item.Price}
+                    $ {props.item.Price}
                 </Typography>
             </CardContent>
             <CardActions>
                 <Button size="small" onMouseDown={event => event.stopPropagation()}
-                onClick={event => {
-                    event.stopPropagation();
-                    event.preventDefault();
-                    props.addToCart(props.n)}}>Order Now</Button>
+                    onClick={event => {
+                        event.stopPropagation();
+                        event.preventDefault();
+                        // props.addToCart(props.n)
+                    }}>Order Now</Button>
             </CardActions>
-        </Card>
-
+        </Card >
     );
 }

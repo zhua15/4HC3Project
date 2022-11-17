@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Popup, { custimizationOptionProps, custimizationOptionsList, customizationType, popupProps } from './PopupPage';
 import ItemCard from "../Components/MenuItemCard";
 import * as menuItem from './../data/menuData.json';
 import Grid from "@mui/material/Grid";
 import Cart, { itemProps, optionsProps } from "../Components/Cart";
-import { Box } from '@mui/system';
+import { Box, height } from '@mui/system';
+import Typography from '@mui/material/Typography';
 import { ShoppingCart } from '@mui/icons-material';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+}
 
 const customizationOptions: custimizationOptionProps[] = [
     {
@@ -55,31 +64,57 @@ const customizationOptions: custimizationOptionProps[] = [
     }
 ]
 
+function TabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }} >
+                    <Typography>{children}</Typography>
+                </Box>
+            )
+            }
+        </div >
+    );
+}
+
 const page = () => {
     const [open, setOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
     const [openCart, setOpenCart] = React.useState(false);
     const [cart, setCart] = React.useState([] as itemProps[]);
     const [orderHistory, setOrderHistory] = React.useState([] as itemProps[]);
+    const [mains, setMains] = React.useState([] as JSX.Element[]);
+    const [appetizers, setAppetizers] = React.useState([] as JSX.Element[]);
+    const [desserts, setDesserts] = React.useState([] as JSX.Element[]);
+    const [drinks, setDrinks] = React.useState([] as JSX.Element[]);
+
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
 
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
-    const handleClickOpen = (n: number) => {
+    const handleClickOpen = (item: any) => {
         setOpen(true);
         const popup: popupProps = {
             open: true,
             setOpen: setOpen,
 
-            name: menuItem.menuItems[n].Name,
-            price: menuItem.menuItems[n].Price,
-            image: menuItem.menuItems[n].Image,
-            rating: menuItem.menuItems[n].Rating,
-            ingrediants: menuItem.menuItems[n].Ingrediants,
-            calories: menuItem.menuItems[n].Calories,
-            customizationOptions: menuItem.menuItems[n].customizationOptions,
+            name: item.Name,
+            price: item.Price,
+            image: item.Image,
+            rating: item.Rating,
+            ingrediants: item.Ingrediants,
+            calories: item.Calories,
+            customizationOptions: item.customizationOptions,
             setCart: setCart,
             cart: cart,
             // customizationOptions: customizationOptions
@@ -104,7 +139,7 @@ const page = () => {
     const addToCart = (n: number) => {
         const tempItem = { name: menuItem.menuItems[n].Name, quantity: 1, price: menuItem.menuItems[n].Price } as itemProps;
         setCart([...cart, tempItem]);
-      }
+    }
 
     const addToOrderHistory = (cart: itemProps[]) => {
         setOrderHistory([...orderHistory, ...cart])
@@ -112,33 +147,94 @@ const page = () => {
 
     const itemNum = menuItem.menuItems.length;
 
+    useEffect(() => {
+        console.log(menuItem.menuItems);
+        let tempMains: JSX.Element[] = [];
+        let tempAppetizers: JSX.Element[] = [];
+        let tempDesserts: JSX.Element[] = [];
+        let tempDrinks: JSX.Element[] = [];
+        menuItem.menuItems.forEach((item) => {
+            const itemCard =
+                (<Grid item xs={3}>
+                    <ItemCard item={item} handleClick={handleClickOpen} addToCart={addToCart} />
+                </Grid>)
+
+            if (item.Tab === "Mains") {
+                tempMains.push(itemCard);
+            } else if (item.Tab === "Appetizers") {
+                tempAppetizers.push(itemCard);
+            } else if (item.Tab === "Desserts") {
+                tempDesserts.push(itemCard);
+            } else if (item.Tab === "Drinks") {
+                tempDrinks.push(itemCard);
+            }
+        })
+        setMains(tempMains);
+        setAppetizers(tempAppetizers);
+        setDesserts(tempDesserts);
+        setDrinks(tempDrinks);
+    }, []);
+
+    function a11yProps(index: number) {
+        return {
+            id: `simple-tab-${index}`,
+            'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
+
+    const [value, setValue] = React.useState(0);
+
+    const handleChangeTabs = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
+    };
+
     //Button can be removed but need to add an onClick function to all the menu cards, keep the line to render the popup as well
     return (
-        <div>
-            <Box
-            m={1}
-            //margin
-            display="flex"
-            justifyContent="flex-end"
-            alignItems="flex-end"
-            >
-                <Button variant='contained' onClick={toggleDrawer()}><ShoppingCart/></Button>
-            </Box>
-            
-            {open ? <Popup {...selectedItem} /> : null}
-            <h1>Menu</h1>
-            <p>Menu page body content</p>
-
-            <Grid container spacing={2} direction='row'>
-                {[...Array(itemNum)].map((elementInArray, index) => (
-                    <Grid item xs={3}>
-                        <ItemCard n={index} handleClick={handleClickOpen} addToCart={addToCart} />
+        <div style={{ background: 'lightCyan' }}>
+            <div>
+                <Box
+                    m={1}
+                    borderBottom={1}
+                    borderColor='divider'
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="flex-end">
+                    <div>
+                        <Tabs value={value} onChange={handleChangeTabs} aria-label="basic tabs">
+                            <Tab label="Mains" {...a11yProps(0)} />
+                            <Tab label="Appetizers" {...a11yProps(1)} />
+                            <Tab label="Desserts" {...a11yProps(2)} />
+                            <Tab label="Drinks" {...a11yProps(3)} />
+                        </Tabs>
+                    </div>
+                    <div style={{ paddingLeft: "2rem", paddingBottom: "0.5rem" }}>
+                        <Button variant='contained' onClick={toggleDrawer()}><ShoppingCart /></Button>
+                    </div>
+                </Box >
+                <TabPanel value={value} index={0}>
+                    <Grid container spacing={2} direction='row'>
+                        {mains}
                     </Grid>
-                )
-                )}
-            </Grid>
-            <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} />
-        </div >
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <Grid container spacing={2} direction='row'>
+                        {appetizers}
+                    </Grid>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <Grid container spacing={2} direction='row'>
+                        {desserts}
+                    </Grid>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    <Grid container spacing={2} direction='row'>
+                        {drinks}
+                    </Grid>
+                </TabPanel>
+                {open ? <Popup {...selectedItem} /> : null}
+                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} />
+            </div >
+        </div>
     );
 }
 
