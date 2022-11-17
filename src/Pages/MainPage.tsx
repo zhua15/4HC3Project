@@ -85,7 +85,7 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-const page = (props: {orderHistoryProps: itemProps[]}) => {
+const page = (props: { orderHistoryProps: itemProps[] }) => {
     // const { orderHistory, setOrderHistory } = props;
 
     const [open, setOpen] = React.useState(false);
@@ -137,18 +137,26 @@ const page = (props: {orderHistoryProps: itemProps[]}) => {
         setSelectedItem(popup);
     };
 
-    const addToCart = (n: number) => {
-        const tempItem = { name: menuItem.menuItems[n].Name, quantity: 1, price: menuItem.menuItems[n].Price } as itemProps;
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    const addToCart = (item: any) => {
+        console.log(cart);
+        const tempItem = { name: item.Name, quantity: 1, price: item.Price } as itemProps;
+        console.log([...cart, tempItem]);
         setCart([...cart, tempItem]);
     }
 
+    useEffect(() => {
+        console.log(cart);
+    }, [cart])
+
     const setOrderHistory = () => {
-        console.log("cart",cart)
+        console.log("cart", cart)
         cart.map((item) => {
             props.orderHistoryProps.push(item)
         })
         // props.orderHistoryProps.extend(...cart)
-      }
+    }
 
 
     const itemNum = menuItem.menuItems.length;
@@ -164,7 +172,6 @@ const page = (props: {orderHistoryProps: itemProps[]}) => {
                 (<Grid item xs={3}>
                     <ItemCard item={item} handleClick={handleClickOpen} addToCart={addToCart} />
                 </Grid>)
-
             if (item.Tab === "Mains") {
                 tempMains.push(itemCard);
             } else if (item.Tab === "Appetizers") {
@@ -179,7 +186,7 @@ const page = (props: {orderHistoryProps: itemProps[]}) => {
         setAppetizers(tempAppetizers);
         setDesserts(tempDesserts);
         setDrinks(tempDrinks);
-    }, []);
+    }, [cart]);
 
     function a11yProps(index: number) {
         return {
@@ -238,7 +245,7 @@ const page = (props: {orderHistoryProps: itemProps[]}) => {
                     </Grid>
                 </TabPanel>
                 {open ? <Popup {...selectedItem} /> : null}
-                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory}/>
+                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory} />
             </div >
         </div>
     );

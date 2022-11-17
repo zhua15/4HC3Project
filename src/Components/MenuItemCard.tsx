@@ -1,18 +1,15 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import * as menuItem from './../data/menuData.json';
-import Grid from "@material-ui/core/Grid";
 
 type Props = {
     item: any;
     handleClick: (i: number) => void;
-    addToCart: (i: number) => void;
+    addToCart: (item: any) => void,
 }
 
 export default function ItemCard(props: Props) {
@@ -38,7 +35,7 @@ export default function ItemCard(props: Props) {
                     onClick={event => {
                         event.stopPropagation();
                         event.preventDefault();
-                        // props.addToCart(props.n)
+                        props.addToCart(props.item);
                     }}>Order Now</Button>
             </CardActions>
         </Card >
