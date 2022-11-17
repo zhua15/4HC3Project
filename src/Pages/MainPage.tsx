@@ -201,6 +201,13 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
         setValue(newValue);
     };
 
+    const handleDeleteItem = (item: itemProps) => {
+        var index = cart.indexOf(item);
+        if (index !== -1) {
+            setCart(cart.splice(index, 1));
+        }
+    }
+
     //Button can be removed but need to add an onClick function to all the menu cards, keep the line to render the popup as well
     return (
         <div style={{ background: 'lightCyan' }}>
@@ -245,7 +252,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     </Grid>
                 </TabPanel>
                 {open ? <Popup {...selectedItem} /> : null}
-                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory} />
+                <Cart cart={cart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory} handleDelete={handleDeleteItem} />
             </div >
         </div>
     );
