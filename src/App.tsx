@@ -52,36 +52,8 @@ const customizationOptions: custimizationOptionProps[] = [
   }
 ]
 
-// const popup: popupProps = {
-//   setOpen: setSelectedItem,
-//   name: "Pizza",
-//   price: 8.99,
-//   image: "/images/pizza.jpg",
-//   rating: 4,
-//   ingrediants: [
-//     "Cheese",
-//     "Dough",
-//     "Tomato Sauce"
-//   ],
-//   calories: 500,
-//   customizationOptions: customizationOptions,
-// }
-
 class App extends Component {
-
-
-  // _renderCounter = () => () => {
-  //   const [orderHistory, setOrderHistory] = React.useState([] as itemProps[]);
-  //   const  props = {
-  //     orderHistoryProps: orderHistory,
-  //     setOrderHistoryProps: setOrderHistory
-  //   }
-  //   return props
-  // }
-
   render() {
-
-    // const props = this._renderCounter();
     var orderHistory:itemProps[]  = []
     var props = {
       orderHistoryProps: orderHistory
@@ -92,9 +64,7 @@ class App extends Component {
         <div>
           <Routes>
             <Route path="/" element={<Menu {...props}/>} />
-            {/* <Route path="/popup" element={<Popup {...popup} />} /> */}
             <Route path="/summary" element={<Summary {...props}/>} />
-            {/* <Route path="/cart" element={<Cart {...cart} />} /> */}
           </Routes>
         </div>
       </HashRouter>
