@@ -51,7 +51,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[500],
+    backgroundColor: theme.palette.mode === 'dark' ? '#fff' : grey[300],
 }));
 
 const Puller = styled(Box)(({ theme }) => ({
