@@ -24,6 +24,8 @@ import { itemProps, optionsProps } from "../Components/Cart";
 
 // summary page component
 const summary = (props: {orderHistoryProps: itemProps[]}) => {
+  useEffect(() => { document.body.style.backgroundColor = 'lightcyan' }, [])
+
   console.log(props)
    const [tip, setTip] = useState(0)
 
@@ -164,7 +166,7 @@ const summary = (props: {orderHistoryProps: itemProps[]}) => {
               <TableRow>
                 <TableCell>Subtotal</TableCell>
                 <TableCell align="right"></TableCell>
-                <TableCell align="right">${subtotal}</TableCell>
+                <TableCell align="right">${subtotal.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Tax</TableCell>
