@@ -106,6 +106,11 @@ const cart = (props: cartProps) => {
           <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
               <TableCell>
+              <Button onClick={(a) => handleDelete(item)}>
+                    <DeleteIcon style={{
+                    color: "#FF0000",
+                }}/>
+                </Button>
                 { item.options && item.options.length > 0 ?
                   <IconButton
                   aria-label="expand row"
@@ -116,11 +121,6 @@ const cart = (props: cartProps) => {
                   </IconButton>
                   : <></>
                 }
-                <Button onClick={(a) => handleDelete(item)}>
-                    <DeleteIcon style={{
-                    color: "#FF0000",
-                }}/>
-                </Button>
                
               </TableCell>
               <TableCell component="th" scope="row">{item.name}</TableCell>
