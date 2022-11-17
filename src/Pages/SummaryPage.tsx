@@ -24,6 +24,8 @@ import { itemProps, optionsProps } from "../Components/Cart";
 
 // summary page component
 const summary = (props: {orderHistoryProps: itemProps[]}) => {
+  useEffect(() => { document.body.style.backgroundColor = 'lightcyan' }, [])
+
   console.log(props)
    const [tip, setTip] = useState(0)
 

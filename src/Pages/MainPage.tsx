@@ -97,6 +97,8 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
     const [desserts, setDesserts] = React.useState([] as JSX.Element[]);
     const [drinks, setDrinks] = React.useState([] as JSX.Element[]);
 
+    useEffect(() => { document.body.style.backgroundColor = 'lightcyan' }, [])
+
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
