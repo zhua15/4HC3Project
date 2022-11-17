@@ -60,6 +60,7 @@ const page = () => {
     const [selectedItem, setSelectedItem] = React.useState({} as popupProps);
     const [openCart, setOpenCart] = React.useState(false);
     const [cart, setCart] = React.useState([] as itemProps[]);
+    const [orderHistory, setOrderHistory] = React.useState([] as itemProps[]);
     const toggleDrawer = () => () => {
         setOpenCart(!openCart);
     };
@@ -104,6 +105,10 @@ const page = () => {
         const tempItem = { name: menuItem.menuItems[n].Name, quantity: 1, price: menuItem.menuItems[n].Price } as itemProps;
         setCart([...cart, tempItem]);
       }
+
+    const addToOrderHistory = (cart: itemProps[]) => {
+        setOrderHistory([...orderHistory, ...cart])
+    }
 
     const itemNum = menuItem.menuItems.length;
 
