@@ -17,7 +17,8 @@ export interface cartProps {
     bleeding: number,
     open: boolean,
     toggleDrawer: any,
-    setHistory:any
+    setHistory:any,
+    handleDelete: any
 }
 
 export interface itemProps {
@@ -59,10 +60,6 @@ const cart = (props: cartProps) => {
         props.setHistory()
         let path = `/summary`; 
         navigate(path);
-    }
-
-    const updateOrderHistory = () => {
-        
     }
 
     return (
@@ -124,7 +121,10 @@ const cart = (props: cartProps) => {
                                     flexWrap: 'wrap',
                                     columnGap: '50px',
                                 }}>
-                                    <DeleteIcon/>
+                                    <Button onClick={props.handleDelete}>
+                                        <DeleteIcon/>
+                                    </Button>
+                                    
                                     <Typography
                                         align='center'>
                                         name: {item.name}
