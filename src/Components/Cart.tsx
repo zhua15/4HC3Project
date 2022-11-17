@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Grid } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 export interface cartProps {
     cart: itemProps[],
@@ -51,6 +52,16 @@ left: 'calc(50% - 15px)',
 }));
 
 const cart = (props: cartProps) => {
+    let navigate = useNavigate(); 
+    const routeChange = () => { 
+        let path = `/summary`; 
+        navigate(path);
+    }
+
+    const updateOrderHistory = () => {
+        
+    }
+
     return (
         <Root>
             <CssBaseline />
@@ -166,8 +177,8 @@ const cart = (props: cartProps) => {
                         Order
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button variant='contained'>
-                        Pay Bill
+                    <Button variant='contained' onClick={routeChange}>
+                        Order and Pay
                     </Button>
                 </Box>
                 </StyledBox>
