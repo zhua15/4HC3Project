@@ -93,7 +93,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
     const [openCart, setOpenCart] = React.useState(false);
     const [cart, setCart] = React.useState([] as itemProps[]);
     const [mains, setMains] = React.useState([] as JSX.Element[]);
-    const [appetizers, setAppetizers] = React.useState([] as JSX.Element[]);
+    const [Snacks, setSnacks] = React.useState([] as JSX.Element[]);
     const [desserts, setDesserts] = React.useState([] as JSX.Element[]);
     const [drinks, setDrinks] = React.useState([] as JSX.Element[]);
 
@@ -120,21 +120,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
             customizationOptions: item.customizationOptions,
             setCart: setCart,
             cart: cart,
-            // customizationOptions: customizationOptions
-            // open: true,
-            // setOpen: setOpen,
-            // name: "Pizza",
-            // price: 8.99,
-            // image: "/images/pizza.jpg",
-            // rating: 4,
-            // ingrediants: [
-            //     "Cheese",
-            //     "Dough",
-            //     "Tomato Sauce"
-            // ],
-            // calories: 500,
 
-            //TODO: other customization options, now it is always pizza
         }
         setSelectedItem(popup);
     };
@@ -166,18 +152,18 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
     useEffect(() => {
         console.log(menuItem.menuItems);
         let tempMains: JSX.Element[] = [];
-        let tempAppetizers: JSX.Element[] = [];
+        let tempSnacks: JSX.Element[] = [];
         let tempDesserts: JSX.Element[] = [];
         let tempDrinks: JSX.Element[] = [];
         menuItem.menuItems.forEach((item) => {
             const itemCard =
-                (<Grid item xs={3}>
+                (<Grid item xs={4}>
                     <ItemCard item={item} handleClick={handleClickOpen} addToCart={addToCart} />
                 </Grid>)
             if (item.Tab === "Mains") {
                 tempMains.push(itemCard);
-            } else if (item.Tab === "Appetizers") {
-                tempAppetizers.push(itemCard);
+            } else if (item.Tab === "Snacks") {
+                tempSnacks.push(itemCard);
             } else if (item.Tab === "Desserts") {
                 tempDesserts.push(itemCard);
             } else if (item.Tab === "Drinks") {
@@ -185,7 +171,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
             }
         })
         setMains(tempMains);
-        setAppetizers(tempAppetizers);
+        setSnacks(tempSnacks);
         setDesserts(tempDesserts);
         setDrinks(tempDrinks);
     }, [cart]);
@@ -217,7 +203,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     <div>
                         <Tabs value={value} onChange={handleChangeTabs} aria-label="basic tabs">
                             <Tab label="Mains" {...a11yProps(0)} />
-                            <Tab label="Appetizers" {...a11yProps(1)} />
+                            <Tab label="Snacks" {...a11yProps(1)} />
                             <Tab label="Desserts" {...a11yProps(2)} />
                             <Tab label="Drinks" {...a11yProps(3)} />
                         </Tabs>
@@ -233,7 +219,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Grid container spacing={2} direction='row'>
-                        {appetizers}
+                        {Snacks}
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={2}>

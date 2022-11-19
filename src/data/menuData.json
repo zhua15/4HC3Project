@@ -66,18 +66,100 @@
     {
       "Name": "Fries",
       "Price": 4.99,
-      "Image": "/images/fries.png",
+      "Image": "/images/fries.jpeg",
       "Rating": 4.5,
-      "Tab": "Appetizers",
+      "Tab": "Snacks",
       "Ingrediants": [
         "Potatoes"
       ],
       "Calories": 500
     },
     {
+      "Name": "Pretzel",
+      "Price": 2.99,
+      "Image": "/images/pretzel.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt"
+      ],
+      "Calories": 200
+    },
+    {
+      "Name": "Taco",
+      "Price": 3.99,
+      "Image": "/images/taco.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt"
+      ],
+      "Calories": 200
+    },
+    {
+      "Name": "Hash Browns",
+      "Price": 3.99,
+      "Image": "/images/hash.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Waffle Fries",
+      "Price": 3.99,
+      "Image": "/images/waffle.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Squid Rings",
+      "Price": 3.99,
+      "Image": "/images/squidring.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Yogurt",
+      "Price": 3.99,
+      "Image": "/images/yogurt.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Sugar",
+        "Milk"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Curly Fries",
+      "Price": 3.99,
+      "Image": "/images/curlyfries.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    },
+    {
       "Name": "Hamburger",
       "Price": 6.99,
-      "Image": "/images/ham.png",
+      "Image": "/images/ham.jpeg",
       "Rating": 4.7,
       "Tab": "Mains",
       "Ingrediants": [
@@ -131,11 +213,47 @@
       "Calories": 900
     },
     {
+      "Name": "Spaghetti",
+      "Price": 8.99,
+      "Image": "/images/pasta.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Spaghetti"
+      ],
+      "Calories": 900
+    },
+    {
+      "Name": "Sandwich",
+      "Price": 8.99,
+      "Image": "/images/sandwich.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Bread",
+        "Ham",
+        "Lettuce"
+      ],
+      "Calories": 900
+    }, 
+    {
+      "Name": "Salad",
+      "Price": 6.99,
+      "Image": "/images/salad.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Vegetable",
+        "Lettuce"
+      ],
+      "Calories": 900
+    },
+    {
       "Name": "Poutine",
       "Price": 6.19,
       "Image": "/images/poutine.png",
       "Rating": 4.8,
-      "Tab": "Appetizers",
+      "Tab": "Snacks",
       "Ingrediants": [
         "Potatoes",
         "Gravy",
@@ -475,6 +593,41 @@
       "Rating": 4.3,
       "Tab": "Desserts",
       "Ingrediants": [],
+      "Calories": 100
+    },
+    {
+      "Name": "Cheese Cake",
+      "Price": 8.99,
+      "Image": "/images/cheesecake.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Chocolate",
+        "Cheese"
+      ],
+      "Calories": 100
+    },
+    {
+      "Name": "Tiramisu",
+      "Price": 9.99,
+      "Image": "/images/tiramisu.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Chocolate",
+        "Cheese"
+      ],
+      "Calories": 100
+    },
+    {
+      "Name": "Pudding",
+      "Price": 9.99,
+      "Image": "/images/pudding.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Egg"
+      ],
       "Calories": 100
     }
   ]
