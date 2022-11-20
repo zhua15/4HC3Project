@@ -230,10 +230,17 @@ const page = (props: popupProps) => {
       <div>
         <Rating name="read-only" value={props.rating} readOnly />
       </div>
-      <label>
-        {`$${props.price} `}
-      </label>
-    </div>
+      <div style={{ display: 'inline-flex' }}>
+        <label>
+          {`$${props.price} `}
+        </label>
+      </div>
+      <div style={{ display: 'inline-flex', paddingLeft: '65%' }}>
+        <label>
+          {`${props.calories} calories`}
+        </label>
+      </div>
+    </div >
   );
 
   const handleSubmit = () => {

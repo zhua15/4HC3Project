@@ -68,7 +68,7 @@ function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 
     return (
-        <div
+        <div style={{ paddingLeft: '2.5%' }}
             role="tabpanel"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
@@ -155,7 +155,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
         let tempDrinks: JSX.Element[] = [];
         menuItem.menuItems.forEach((item) => {
             const itemCard =
-                (<Grid item xs={4}>
+                (<Grid item xs={3}>
                     <ItemCard item={item} handleClick={handleClickOpen} addToCart={addToCart} />
                 </Grid>)
             if (item.Tab === "Mains") {
@@ -201,7 +201,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     <div>
                         <Tabs value={value} onChange={handleChangeTabs} aria-label="basic tabs">
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Mains" {...a11yProps(0)} />
-                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Appetizers" {...a11yProps(1)} />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Snacks" {...a11yProps(1)} />
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Desserts" {...a11yProps(2)} />
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Drinks" {...a11yProps(3)} />
                         </Tabs>
