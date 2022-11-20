@@ -115,7 +115,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
             price: item.Price,
             image: item.Image,
             rating: item.Rating,
-            ingrediants: item.Ingrediants,
+            Ingredients: item.Ingredients,
             calories: item.Calories,
             customizationOptions: item.customizationOptions,
             setCart: setCart,

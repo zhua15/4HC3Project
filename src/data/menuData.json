@@ -6,7 +6,7 @@
       "Image": "./images/pizza.jpg",
       "Rating": 4,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Cheese",
         "Dough",
         "Tomato Sauce"
@@ -69,7 +69,7 @@
       "Image": "./images/fries.jpeg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Potatoes"
       ],
       "Calories": 500
@@ -80,7 +80,7 @@
       "Image": "./images/pretzel.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt"
       ],
       "Calories": 200
@@ -91,7 +91,7 @@
       "Image": "./images/taco.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt"
       ],
       "Calories": 200
@@ -102,7 +102,7 @@
       "Image": "./images/hash.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt",
         "Potato"
       ],
@@ -114,7 +114,7 @@
       "Image": "./images/waffle.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt",
         "Potato"
       ],
@@ -126,7 +126,7 @@
       "Image": "./images/squidring.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt",
         "Potato"
       ],
@@ -138,7 +138,7 @@
       "Image": "./images/yogurt.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar",
         "Milk"
       ],
@@ -150,7 +150,7 @@
       "Image": "./images/curlyfries.jpg",
       "Rating": 4.5,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Salt",
         "Potato"
       ],
@@ -162,7 +162,7 @@
       "Image": "./images/ham.jpeg",
       "Rating": 4.7,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Bread",
         "Beef"
       ],
@@ -205,7 +205,7 @@
       "Image": "./images/wrap.jpg",
       "Rating": 4.3,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Chicken",
         "Lettuce",
         "Shredded Carrots",
@@ -220,7 +220,7 @@
       "Image": "./images/pasta.jpg",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Spaghetti"
       ],
       "Calories": 900
@@ -231,7 +231,7 @@
       "Image": "./images/sandwich.jpg",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Bread",
         "Ham",
         "Lettuce"
@@ -244,7 +244,7 @@
       "Image": "./images/salad.jpg",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Vegetable",
         "Lettuce"
       ],
@@ -256,7 +256,7 @@
       "Image": "./images/poutine.png",
       "Rating": 4.8,
       "Tab": "Snacks",
-      "Ingrediants": [
+      "Ingredients": [
         "Potatoes",
         "Gravy",
         "Cheese"
@@ -290,7 +290,7 @@
       "Image": "./images/chicken6.png",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Chicken"
       ],
       "Calories": 300,
@@ -322,7 +322,7 @@
       "Image": "./images/chicken10.png",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Chicken"
       ],
       "Calories": 500,
@@ -354,7 +354,7 @@
       "Image": "./images/chicken20.png",
       "Rating": 4.8,
       "Tab": "Mains",
-      "Ingrediants": [
+      "Ingredients": [
         "Chicken"
       ],
       "Calories": 1000,
@@ -386,7 +386,7 @@
       "Image": "./images/cookie.png",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Chocolate"
       ],
       "Calories": 100
@@ -397,7 +397,7 @@
       "Image": "./images/pie.png",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Apple"
       ],
       "Calories": 100
@@ -408,7 +408,7 @@
       "Image": "./images/donut.png",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar"
       ],
       "Calories": 100
@@ -419,7 +419,7 @@
       "Image": "./images/muffin.png",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar"
       ],
       "Calories": 100
@@ -470,7 +470,7 @@
           ]
         }
       ],
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar"
       ],
       "Calories": 100
@@ -481,7 +481,7 @@
       "Image": "./images/latte.png",
       "Rating": 4.7,
       "Tab": "Drinks",
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar"
       ],
       "Calories": 100
@@ -492,7 +492,7 @@
       "Image": "./images/cappuccino.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [
+      "Ingredients": [
         "Sugar"
       ],
       "Calories": 100
@@ -503,7 +503,7 @@
       "Image": "./images/americano.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [
+      "Ingredients": [
         "Coffee",
         "Milk",
         "Sugar"
@@ -516,7 +516,7 @@
       "Image": "./images/coke.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -525,7 +525,7 @@
       "Image": "./images/dietcoke.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -534,7 +534,7 @@
       "Image": "./images/sprite.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -543,7 +543,7 @@
       "Image": "./images/icedtea.jpeg",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [
+      "Ingredients": [
         "Tea",
         "Sugar"
       ],
@@ -555,7 +555,7 @@
       "Image": "./images/orangejuice.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [
+      "Ingredients": [
         "Oranges",
         "Sugar"
       ],
@@ -567,7 +567,7 @@
       "Image": "./images/milk.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -576,7 +576,7 @@
       "Image": "./images/water.png",
       "Rating": 4.3,
       "Tab": "Drinks",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -585,7 +585,7 @@
       "Image": "./images/SIC.png",
       "Rating": 4.3,
       "Tab": "Desserts",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -594,7 +594,7 @@
       "Image": "./images/CIC.png",
       "Rating": 4.3,
       "Tab": "Desserts",
-      "Ingrediants": [],
+      "Ingredients": [],
       "Calories": 100
     },
     {
@@ -603,7 +603,7 @@
       "Image": "./images/cheesecake.jpg",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Chocolate",
         "Cheese"
       ],
@@ -615,7 +615,7 @@
       "Image": "./images/tiramisu.jpg",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Chocolate",
         "Cheese"
       ],
@@ -627,7 +627,7 @@
       "Image": "./images/pudding.jpg",
       "Rating": 4.5,
       "Tab": "Desserts",
-      "Ingrediants": [
+      "Ingredients": [
         "Egg"
       ],
       "Calories": 100

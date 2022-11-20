@@ -39,7 +39,7 @@ export interface popupProps {
   price: number;
   image: string;
   rating: number;
-  ingrediants?: string[];
+  Ingredients?: string[];
   calories: number;
   customizationOptions?: custimizationOptionProps[];
 }
@@ -73,7 +73,7 @@ interface subheader {
 const page = (props: popupProps) => {
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('body');
   const [values, setValues] = React.useState({} as any);
-  const [ingrediantsTableRows, setIngrediantsTableRows] = React.useState([] as JSX.Element[]);
+  const [IngredientsTableRows, setIngredientsTableRows] = React.useState([] as JSX.Element[]);
   const [openTable, setOpenTable] = React.useState(false);
   const [quantity, setQuantity] = React.useState(1);
 
@@ -286,7 +286,7 @@ const page = (props: popupProps) => {
           src={props.image}
         />
         <DialogContent dividers={scroll === 'paper'}>
-          {props.ingrediants && props.ingrediants.length > 0 ?
+          {props.Ingredients && props.Ingredients.length > 0 ?
             <TableContainer sx={{ marginTop: '2vh', marginBottom: '5vh' }} component={Paper}>
               <Table sx={{}} aria-label="cart table">
                 <TableHead>
@@ -298,12 +298,12 @@ const page = (props: popupProps) => {
                         onClick={() => setOpenTable(!openTable)}
                       >
                         {openTable ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                      </IconButton><label style={{ color: primaryColor }}><b>Ingrediants</b></label></TableCell>
+                      </IconButton><label style={{ color: primaryColor }}><b>Ingredients</b></label></TableCell>
                   </TableRow>
                 </TableHead>
                 <Collapse in={openTable} timeout="auto" unmountOnExit>
                   <TableBody>
-                    {props.ingrediants.map((item) => (
+                    {props.Ingredients.map((item) => (
                       <TableRow key={item}>
                         <TableCell sx={{ width: '100vw' }}>
                           {item}
