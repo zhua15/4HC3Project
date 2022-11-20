@@ -308,7 +308,8 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     sx={{
                         position: "sticky",
                         top: 0,
-                        backgroundColor: 'lightcyan'
+                        backgroundColor: 'lightcyan',
+                        zIndex: 30
                     }}>
                         <Tabs value={activeState ? activeState : itemsServer[0].hash}>
           {itemsServer.map((item2) => (
