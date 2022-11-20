@@ -3,7 +3,7 @@
     {
       "Name": "Pizza",
       "Price": 8.99,
-      "Image": "/images/pizza.jpg",
+      "Image": "./images/pizza.jpg",
       "Rating": 4,
       "Tab": "Mains",
       "Ingrediants": [
@@ -66,18 +66,100 @@
     {
       "Name": "Fries",
       "Price": 4.99,
-      "Image": "/images/fries.png",
+      "Image": "./images/fries.jpeg",
       "Rating": 4.5,
-      "Tab": "Appetizers",
+      "Tab": "Snacks",
       "Ingrediants": [
         "Potatoes"
       ],
       "Calories": 500
     },
     {
+      "Name": "Pretzel",
+      "Price": 2.99,
+      "Image": "./images/pretzel.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt"
+      ],
+      "Calories": 200
+    },
+    {
+      "Name": "Taco",
+      "Price": 3.99,
+      "Image": "./images/taco.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt"
+      ],
+      "Calories": 200
+    },
+    {
+      "Name": "Hash Browns",
+      "Price": 3.99,
+      "Image": "./images/hash.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Waffle Fries",
+      "Price": 3.99,
+      "Image": "./images/waffle.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Squid Rings",
+      "Price": 3.99,
+      "Image": "./images/squidring.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Yogurt",
+      "Price": 3.99,
+      "Image": "./images/yogurt.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Sugar",
+        "Milk"
+      ],
+      "Calories": 200
+    }, 
+    {
+      "Name": "Curly Fries",
+      "Price": 3.99,
+      "Image": "./images/curlyfries.jpg",
+      "Rating": 4.5,
+      "Tab": "Snacks",
+      "Ingrediants": [
+        "Salt",
+        "Potato"
+      ],
+      "Calories": 200
+    },
+    {
       "Name": "Hamburger",
       "Price": 6.99,
-      "Image": "/images/ham.png",
+      "Image": "./images/ham.jpeg",
       "Rating": 4.7,
       "Tab": "Mains",
       "Ingrediants": [
@@ -120,7 +202,7 @@
     {
       "Name": "Wrap",
       "Price": 8.99,
-      "Image": "/images/wrap.jpg",
+      "Image": "./images/wrap.jpg",
       "Rating": 4.3,
       "Tab": "Mains",
       "Ingrediants": [
@@ -133,11 +215,47 @@
       "Calories": 900
     },
     {
+      "Name": "Spaghetti",
+      "Price": 8.99,
+      "Image": "./images/pasta.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Spaghetti"
+      ],
+      "Calories": 900
+    },
+    {
+      "Name": "Sandwich",
+      "Price": 8.99,
+      "Image": "./images/sandwich.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Bread",
+        "Ham",
+        "Lettuce"
+      ],
+      "Calories": 900
+    }, 
+    {
+      "Name": "Salad",
+      "Price": 6.99,
+      "Image": "./images/salad.jpg",
+      "Rating": 4.8,
+      "Tab": "Mains",
+      "Ingrediants": [
+        "Vegetable",
+        "Lettuce"
+      ],
+      "Calories": 900
+    },
+    {
       "Name": "Poutine",
       "Price": 6.19,
-      "Image": "/images/poutine.png",
+      "Image": "./images/poutine.png",
       "Rating": 4.8,
-      "Tab": "Appetizers",
+      "Tab": "Snacks",
       "Ingrediants": [
         "Potatoes",
         "Gravy",
@@ -169,7 +287,7 @@
     {
       "Name": "6 pcs Chicken Nuggets",
       "Price": 7.99,
-      "Image": "/images/chicken6.png",
+      "Image": "./images/chicken6.png",
       "Rating": 4.8,
       "Tab": "Mains",
       "Ingrediants": [
@@ -201,7 +319,7 @@
     {
       "Name": "10 pcs Chicken Nuggets",
       "Price": 10.99,
-      "Image": "/images/chicken10.png",
+      "Image": "./images/chicken10.png",
       "Rating": 4.8,
       "Tab": "Mains",
       "Ingrediants": [
@@ -233,7 +351,7 @@
     {
       "Name": "20 pcs Chicken Nuggets",
       "Price": 17.99,
-      "Image": "/images/chicken20.png",
+      "Image": "./images/chicken20.png",
       "Rating": 4.8,
       "Tab": "Mains",
       "Ingrediants": [
@@ -265,7 +383,7 @@
     {
       "Name": "Chocolate Cookie",
       "Price": 2.99,
-      "Image": "/images/cookie.png",
+      "Image": "./images/cookie.png",
       "Rating": 4.5,
       "Tab": "Desserts",
       "Ingrediants": [
@@ -276,7 +394,7 @@
     {
       "Name": "Apple pie",
       "Price": 1.99,
-      "Image": "/images/pie.png",
+      "Image": "./images/pie.png",
       "Rating": 4.5,
       "Tab": "Desserts",
       "Ingrediants": [
@@ -287,7 +405,7 @@
     {
       "Name": "Donut",
       "Price": 2.99,
-      "Image": "/images/donut.png",
+      "Image": "./images/donut.png",
       "Rating": 4.5,
       "Tab": "Desserts",
       "Ingrediants": [
@@ -298,7 +416,7 @@
     {
       "Name": "Muffin",
       "Price": 2.99,
-      "Image": "/images/muffin.png",
+      "Image": "./images/muffin.png",
       "Rating": 4.5,
       "Tab": "Desserts",
       "Ingrediants": [
@@ -309,7 +427,7 @@
     {
       "Name": "Coffee",
       "Price": 2.09,
-      "Image": "/images/coffee.png",
+      "Image": "./images/coffee.png",
       "Rating": 4.5,
       "Tab": "Drinks",
       "customizationOptions": [
@@ -360,7 +478,7 @@
     {
       "Name": "Latte",
       "Price": 2.99,
-      "Image": "/images/latte.png",
+      "Image": "./images/latte.png",
       "Rating": 4.7,
       "Tab": "Drinks",
       "Ingrediants": [
@@ -371,7 +489,7 @@
     {
       "Name": "Cappuccino",
       "Price": 2.99,
-      "Image": "/images/cappuccino.png",
+      "Image": "./images/cappuccino.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [
@@ -382,7 +500,7 @@
     {
       "Name": "Americano",
       "Price": 1.99,
-      "Image": "/images/americano.png",
+      "Image": "./images/americano.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [
@@ -395,7 +513,7 @@
     {
       "Name": "Coke",
       "Price": 1.99,
-      "Image": "/images/coke.png",
+      "Image": "./images/coke.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [],
@@ -404,7 +522,7 @@
     {
       "Name": "Diet Coke",
       "Price": 1.99,
-      "Image": "/images/dietcoke.png",
+      "Image": "./images/dietcoke.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [],
@@ -413,7 +531,7 @@
     {
       "Name": "Sprite",
       "Price": 1.99,
-      "Image": "/images/sprite.png",
+      "Image": "./images/sprite.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [],
@@ -422,7 +540,7 @@
     {
       "Name": "Iced Tea",
       "Price": 1.99,
-      "Image": "/images/icedtea.jpeg",
+      "Image": "./images/icedtea.jpeg",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [
@@ -434,7 +552,7 @@
     {
       "Name": "Orange Juice",
       "Price": 1.99,
-      "Image": "/images/orangejuice.png",
+      "Image": "./images/orangejuice.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [
@@ -446,7 +564,7 @@
     {
       "Name": "Milk",
       "Price": 1.99,
-      "Image": "/images/milk.png",
+      "Image": "./images/milk.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [],
@@ -455,7 +573,7 @@
     {
       "Name": "Water",
       "Price": 1.99,
-      "Image": "/images/water.png",
+      "Image": "./images/water.png",
       "Rating": 4.3,
       "Tab": "Drinks",
       "Ingrediants": [],
@@ -464,7 +582,7 @@
     {
       "Name": "Strawberry Ice Cream",
       "Price": 1.99,
-      "Image": "/images/SIC.png",
+      "Image": "./images/SIC.png",
       "Rating": 4.3,
       "Tab": "Desserts",
       "Ingrediants": [],
@@ -473,10 +591,45 @@
     {
       "Name": "Chocolate Ice Cream",
       "Price": 1.99,
-      "Image": "/images/CIC.png",
+      "Image": "./images/CIC.png",
       "Rating": 4.3,
       "Tab": "Desserts",
       "Ingrediants": [],
+      "Calories": 100
+    },
+    {
+      "Name": "Cheese Cake",
+      "Price": 8.99,
+      "Image": "./images/cheesecake.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Chocolate",
+        "Cheese"
+      ],
+      "Calories": 100
+    },
+    {
+      "Name": "Tiramisu",
+      "Price": 9.99,
+      "Image": "./images/tiramisu.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Chocolate",
+        "Cheese"
+      ],
+      "Calories": 100
+    },
+    {
+      "Name": "Pudding",
+      "Price": 9.99,
+      "Image": "./images/pudding.jpg",
+      "Rating": 4.5,
+      "Tab": "Desserts",
+      "Ingrediants": [
+        "Egg"
+      ],
       "Calories": 100
     }
   ]
