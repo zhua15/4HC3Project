@@ -8,12 +8,25 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl, { formControlClasses } from '@mui/material/FormControl';
+import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import { itemProps, optionsProps } from '../Components/Cart';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Rating from '@mui/material/Rating';
+import QuantitySelector from '../Components/QuantitySelector';
 
 const primaryColor = '#1976d2'
 
@@ -60,6 +73,10 @@ interface subheader {
 const page = (props: popupProps) => {
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('body');
   const [values, setValues] = React.useState({} as any);
+  const [ingrediantsTableRows, setIngrediantsTableRows] = React.useState([] as JSX.Element[]);
+  const [openTable, setOpenTable] = React.useState(false);
+  const [quantity, setQuantity] = React.useState(1);
+
   const options: JSX.Element[] = [];
 
   const handleRadioChange = (label: string, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,8 +183,13 @@ const page = (props: popupProps) => {
         );
         options.push(<br></br>);
       }
-    })
+    });
   }
+  options.push(
+    <div>
+      <QuantitySelector quantity={quantity} setQuantity={setQuantity} popup={true} />
+    </div>
+  );
 
   const handleClose = () => {
     props.setOpen(false);
@@ -200,10 +222,22 @@ const page = (props: popupProps) => {
     }
   }, [props.open]);
 
-  const title = <div><label style={{ color: primaryColor, fontSize: "2rem", fontStyle: "bold" }}>{props.name}</label><br></br><label>{`$${props.price} `}</label></div>;
+  const title = (
+    <div>
+      <label style={{ color: primaryColor, fontSize: "2rem", fontStyle: "bold" }}>
+        {props.name}
+      </label>
+      <div>
+        <Rating name="read-only" value={props.rating} readOnly />
+      </div>
+      <label>
+        {`$${props.price} `}
+      </label>
+    </div>
+  );
 
   const handleSubmit = () => {
-    const tempItem = { name: props.name, quantity: 1, price: props.price } as itemProps;
+    const tempItem = { name: props.name, quantity: quantity, price: props.price } as itemProps;
     const tempData = [] as optionsProps[];
     for (const key in values) {
       console.log(values[key]);
@@ -238,13 +272,40 @@ const page = (props: popupProps) => {
         <Box
           component="img"
           sx={{
-            height: '25rem',
+            height: '22rem',
             width: '100%',
           }}
           alt={props.name}
           src={props.image}
         />
         <DialogContent dividers={scroll === 'paper'}>
+          {props.ingrediants && props.ingrediants.length > 0 ?
+            <TableContainer sx={{ marginTop: '2vh', marginBottom: '5vh' }} component={Paper}>
+              <Table sx={{}} aria-label="cart table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() => setOpenTable(!openTable)}
+                      >
+                        {openTable ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                      </IconButton><label style={{ color: primaryColor }}><b>Ingrediants</b></label></TableCell>
+                  </TableRow>
+                </TableHead>
+                <Collapse in={openTable} timeout="auto" unmountOnExit>
+                  <TableBody>
+                    {props.ingrediants.map((item) => (
+                      <TableRow key={item}>
+                        <TableCell sx={{ width: '100vw' }}>
+                          {item}
+                        </TableCell>
+                      </TableRow>))}
+                  </TableBody>
+                </Collapse>
+              </Table>
+            </TableContainer> : null}
           <DialogContentText
             id="scroll-dialog-description"
             ref={descriptionElementRef}
@@ -255,10 +316,10 @@ const page = (props: popupProps) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>Subscribe</Button>
+          <Button onClick={handleSubmit}>Add to Cart</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </div >
   );
 }
 

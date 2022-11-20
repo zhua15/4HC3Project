@@ -110,7 +110,6 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
         const popup: popupProps = {
             open: true,
             setOpen: setOpen,
-
             name: item.Name,
             price: item.Price,
             image: item.Image,
@@ -120,30 +119,15 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
             customizationOptions: item.customizationOptions,
             setCart: setCart,
             cart: cart,
-            // customizationOptions: customizationOptions
-            // open: true,
-            // setOpen: setOpen,
-            // name: "Pizza",
-            // price: 8.99,
-            // image: "/images/pizza.jpg",
-            // rating: 4,
-            // ingrediants: [
-            //     "Cheese",
-            //     "Dough",
-            //     "Tomato Sauce"
-            // ],
-            // calories: 500,
-
-            //TODO: other customization options, now it is always pizza
         }
         setSelectedItem(popup);
     };
 
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-    const addToCart = (item: any) => {
+    const addToCart = (item: any, quantity: number) => {
         console.log(cart);
-        const tempItem = { name: item.Name, quantity: 1, price: item.Price } as itemProps;
+        const tempItem = { name: item.Name, quantity: quantity, price: item.Price } as itemProps;
         console.log([...cart, tempItem]);
         setCart([...cart, tempItem]);
     }
@@ -164,7 +148,6 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
     const itemNum = menuItem.menuItems.length;
 
     useEffect(() => {
-        console.log(menuItem.menuItems);
         let tempMains: JSX.Element[] = [];
         let tempAppetizers: JSX.Element[] = [];
         let tempDesserts: JSX.Element[] = [];
@@ -216,10 +199,10 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     alignItems="flex-end">
                     <div>
                         <Tabs value={value} onChange={handleChangeTabs} aria-label="basic tabs">
-                            <Tab label="Mains" {...a11yProps(0)} />
-                            <Tab label="Appetizers" {...a11yProps(1)} />
-                            <Tab label="Desserts" {...a11yProps(2)} />
-                            <Tab label="Drinks" {...a11yProps(3)} />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Mains" {...a11yProps(0)} />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Appetizers" {...a11yProps(1)} />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Desserts" {...a11yProps(2)} />
+                            <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Drinks" {...a11yProps(3)} />
                         </Tabs>
                     </div>
                     <div style={{ paddingLeft: "2rem", paddingBottom: "0.5rem" }}>
@@ -247,7 +230,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     </Grid>
                 </TabPanel>
                 {open ? <Popup {...selectedItem} /> : null}
-                <Cart cart={cart} setCart={setCart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory}/>
+                <Cart cart={cart} setCart={setCart} bleeding={0} open={openCart} toggleDrawer={toggleDrawer} setHistory={setOrderHistory} />
             </div >
         </div>
     );

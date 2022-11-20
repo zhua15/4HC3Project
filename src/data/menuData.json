@@ -126,6 +126,8 @@
       "Ingrediants": [
         "Chicken",
         "Lettuce",
+        "Shredded Carrots",
+        "Onions",
         "Mayo"
       ],
       "Calories": 900
@@ -150,15 +152,15 @@
           "options": [
             {
               "optionName": "Bacon",
-              "price": 1.00
+              "price": 0.99
             },
             {
               "optionName": "Chicken",
-              "price": 1.00
+              "price": 0.99
             },
             {
               "optionName": "Beef",
-              "price": 1.00
+              "price": 0.99
             }
           ]
         }
@@ -173,10 +175,10 @@
       "Ingrediants": [
         "Chicken"
       ],
-      "Calories": 700,
+      "Calories": 300,
       "customizationOptions": [
         {
-          "componentType": "Multi",
+          "componentType": "Single",
           "label": "Select Sauce",
           "summaryViewLabel": "Sauce",
           "options": [
@@ -205,10 +207,10 @@
       "Ingrediants": [
         "Chicken"
       ],
-      "Calories": 900,
+      "Calories": 500,
       "customizationOptions": [
         {
-          "componentType": "Multi",
+          "componentType": "Single",
           "label": "Select Sauce",
           "summaryViewLabel": "Sauce",
           "options": [
@@ -237,10 +239,10 @@
       "Ingrediants": [
         "Chicken"
       ],
-      "Calories": 1400,
+      "Calories": 1000,
       "customizationOptions": [
         {
-          "componentType": "Multi",
+          "componentType": "Single",
           "label": "Select Sauce",
           "summaryViewLabel": "Extras",
           "options": [
