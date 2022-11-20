@@ -105,6 +105,8 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
 
     // Need to add this function to onClick of all menu cards and pass the card values to setSelectedItem.
     // Card values should be of type popupProps and each menu card should have these values created
+    const PATH = "." // needed for localpath when displaying to index.html
+
     const handleClickOpen = (item: any) => {
         setOpen(true);
         const popup: popupProps = {
@@ -113,7 +115,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
 
             name: item.Name,
             price: item.Price,
-            image: item.Image,
+            image: PATH + item.Image,
             rating: item.Rating,
             ingrediants: item.Ingrediants,
             calories: item.Calories,

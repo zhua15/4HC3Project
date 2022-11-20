@@ -1,7 +1,7 @@
 {
   "name": "menu-app",
   "version": "0.1.0",
-  "homepage": "https://zhua15.github.io/4HC3Project",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
