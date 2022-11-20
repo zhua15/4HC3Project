@@ -197,9 +197,15 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     borderColor='divider'
                     display="flex"
                     justifyContent="center"
-                    alignItems="flex-end">
+                    alignItems="flex-end"
+                    style={{ background: 'lightCyan' }}
+                    sx={{
+                        position: "sticky",
+                        top: 0,
+                    }}>
                     <div>
-                        <Tabs value={value} onChange={handleChangeTabs} aria-label="basic tabs">
+                        <Tabs variant="scrollable" scrollButtons="auto"
+                        value={value} onChange={handleChangeTabs} aria-label="basic tabs">
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Mains" {...a11yProps(0)} />
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Snacks" {...a11yProps(1)} />
                             <Tab sx={{ fontWeight: 'bold', color: 'black' }} label="Desserts" {...a11yProps(2)} />
