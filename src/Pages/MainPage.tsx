@@ -284,6 +284,27 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
     }
   }, [activeState, itemsServer]);
 
+  const handleClick = (hash: any) => () => {
+    // Used to disable findActiveIndex if the page scrolls due to a click
+    clickedRef.current = true;
+    unsetClickedRef.current = setTimeout(() => {
+      clickedRef.current = false;
+    }, 1000);
+
+    if (activeState !== hash) {
+      setActiveState(hash);
+
+      if (window)
+        window.scrollTo({
+          top:
+            document.getElementById(hash)!.getBoundingClientRect().top +
+            window.pageYOffset,
+          behavior: "smooth"
+        });
+    }
+  };
+
+
   // Corresponds to 10 frames at 60 Hz
   useThrottledOnScroll(itemsServer.length > 0 ? findActiveIndex : null, 166);
 
@@ -313,7 +334,7 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                     }}>
                         <Tabs value={activeState ? activeState : itemsServer[0].hash}>
           {itemsServer.map((item2) => (
-            <Tab key={item2.hash} label={item2.text} value={item2.hash} />
+            <Tab key={item2.hash} label={item2.text} value={item2.hash} onClick={handleClick(item2.hash)} />
           ))}
         </Tabs>
         <div style={{ paddingLeft: "2rem", paddingBottom: "0.5rem" }}>
