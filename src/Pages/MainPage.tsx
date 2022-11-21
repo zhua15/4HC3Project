@@ -347,7 +347,17 @@ const page = (props: { orderHistoryProps: itemProps[] }) => {
                 <div>
         {itemsServer.map((item1) => (
           <div id={item1.hash} key={item1.text}>
+            <Box display="flex"
+                    justifyContent="center" alignItems="flex-end" sx={{ paddingTop: 7, paddingBottom: 7 }}>
+                     <Typography fontSize="30px">
+                     {item1.text}
+                     </Typography>
+                            
+                   
+                               
+            </Box>
             <Grid container spacing={2} direction='row'>
+                        
                         {item1.component}
                     </Grid>
           </div>
